@@ -1,0 +1,96 @@
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using SchoolRepairSystem.IService;
+using SchoolRepairSystemModels;
+using SchoolRepairSystemModels.ViewModels;
+
+namespace SchoolRepairSystem.Api.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+
+    public class UserController : ControllerBase
+    {
+        private readonly IUsersService _usersService;
+        private readonly IMapper _mapper;
+
+        public UserController(IUsersService usersService, IMapper mapper)
+        {
+            _usersService = usersService;
+            _mapper = mapper;
+        }
+        /// <summary>
+        /// 获取所有用户账号信息
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("userList")]
+        [Authorize(Policy = "Admin")]
+        public async Task<ResponseMessage<List<UserViewModel>>> GetUserList()
+        {
+            List<Users> userList = await _usersService.QueryAll();
+            return new ResponseMessage<List<UserViewModel>>()
+            {
+                Msg = "请求成功",
+                Status = 200,
+                Success = true,
+                ResponseInfo = _mapper.Map<List<UserViewModel>>(userList)
+            };
+        }
+        /// <summary>
+        /// 更改user的数据
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("updateUserInfo")]
+        [Authorize(Policy = "Admin")]
+        public async Task<ResponseMessage<UserViewModel>> UpdateUserInfo([FromBody] UserViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                Users verifyPresenceUser = _usersService.Query(x => x.UserName == model.UserName)?.Result;
+                if (verifyPresenceUser!=null)
+                {
+                    return new ResponseMessage<UserViewModel>()
+                    {
+                        Msg = "用户名存在！更改失败",
+                        Success = false
+                    };
+                }
+                Users user = await _usersService.QueryById(model.Id);
+                user.UserName = model.UserName;
+                user.Password = model.Password;
+                user.Phone = model.Phone;
+                user.Mail = model.Mail;
+                bool update = await _usersService.Update(user);
+                if (update)
+                {
+                    return new ResponseMessage<UserViewModel>()
+                    {
+                        Msg = "修改成功",
+                        Status = 200,
+                        Success = true,
+                        ResponseInfo = _mapper.Map<UserViewModel>(user)
+                    };
+                }
+                return new ResponseMessage<UserViewModel>()
+                {
+                    Msg = "修改失败",
+                    Success = false
+                };
+                
+            }
+            return new ResponseMessage<UserViewModel>()
+            {
+                Msg = "验证不通过",
+                Success = false
+            };
+        }
+
+
+    }
+}

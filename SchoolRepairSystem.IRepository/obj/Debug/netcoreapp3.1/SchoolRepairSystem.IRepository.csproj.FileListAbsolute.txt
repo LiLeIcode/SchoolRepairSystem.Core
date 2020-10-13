@@ -1,0 +1,12 @@
+D:\CSharperWeb\SchoolRepairSystem\SchoolRepairSystem.IRepository\bin\Debug\netcoreapp3.1\SchoolRepairSystem.IRepository.deps.json
+D:\CSharperWeb\SchoolRepairSystem\SchoolRepairSystem.IRepository\bin\Debug\netcoreapp3.1\SchoolRepairSystem.IRepository.dll
+D:\CSharperWeb\SchoolRepairSystem\SchoolRepairSystem.IRepository\bin\Debug\netcoreapp3.1\SchoolRepairSystem.IRepository.pdb
+D:\CSharperWeb\SchoolRepairSystem\SchoolRepairSystem.IRepository\bin\Debug\netcoreapp3.1\SchoolRepairSystemModels.dll
+D:\CSharperWeb\SchoolRepairSystem\SchoolRepairSystem.IRepository\bin\Debug\netcoreapp3.1\SchoolRepairSystemModels.pdb
+D:\CSharperWeb\SchoolRepairSystem\SchoolRepairSystem.IRepository\obj\Debug\netcoreapp3.1\SchoolRepairSystem.IRepository.csprojAssemblyReference.cache
+D:\CSharperWeb\SchoolRepairSystem\SchoolRepairSystem.IRepository\obj\Debug\netcoreapp3.1\SchoolRepairSystem.IRepository.AssemblyInfoInputs.cache
+D:\CSharperWeb\SchoolRepairSystem\SchoolRepairSystem.IRepository\obj\Debug\netcoreapp3.1\SchoolRepairSystem.IRepository.AssemblyInfo.cs
+D:\CSharperWeb\SchoolRepairSystem\SchoolRepairSystem.IRepository\obj\Debug\netcoreapp3.1\SchoolRepairSystem.IRepository.csproj.CoreCompileInputs.cache
+D:\CSharperWeb\SchoolRepairSystem\SchoolRepairSystem.IRepository\obj\Debug\netcoreapp3.1\SchoolRepairSystem.IRepository.csproj.CopyComplete
+D:\CSharperWeb\SchoolRepairSystem\SchoolRepairSystem.IRepository\obj\Debug\netcoreapp3.1\SchoolRepairSystem.IRepository.dll
+D:\CSharperWeb\SchoolRepairSystem\SchoolRepairSystem.IRepository\obj\Debug\netcoreapp3.1\SchoolRepairSystem.IRepository.pdb

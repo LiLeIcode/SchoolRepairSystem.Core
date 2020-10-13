@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SchoolRepairSystem.Api</name>
+    </assembly>
+    <members>
+        <member name="M:SchoolRepairSystem.Api.Controllers.LoginController.PostToken(SchoolRepairSystemModels.ViewModels.LoginUser)">
+            <summary>
+            登录
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SchoolRepairSystem.Api.Controllers.MenuController">
+            数据库表为建立，独立表，与其他表无关联
+            根据授权策略分权访问
+        </member>
+        <member name="M:SchoolRepairSystem.Api.Controllers.RegisterController.PostAddUser(SchoolRepairSystemModels.ViewModels.RegisterUserViewModel)">
+            <summary>
+            普通注册
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SchoolRepairSystem.Api.Controllers.RepairController.GetReportForPair(SchoolRepairSystemModels.ViewModels.RepairViewModel)">
+            <summary>
+            报修
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SchoolRepairSystem.Api.Controllers.RepairController.GetUserAllRecord">
+            <summary>
+            获取个人报修记录
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SchoolRepairSystem.Api.Controllers.RepairController.PostComment(System.Int64,System.Int32)">
+            <summary>
+            填写已完成的评论
+            </summary>
+            <param name="reportForRepairId"></param>
+            <param name="evaluate">0无,1好,2中,3差</param>
+            <returns></returns>
+        </member>
+        <member name="M:SchoolRepairSystem.Api.Controllers.UserController.GetUserList">
+            <summary>
+            获取所有用户账号信息
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SchoolRepairSystem.Api.Controllers.UserController.UpdateUserInfo(SchoolRepairSystemModels.ViewModels.UserViewModel)">
+            <summary>
+            更改user的数据
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

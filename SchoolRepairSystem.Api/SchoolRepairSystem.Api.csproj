@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>D:\CSharperWeb\SchoolRepairSystem\SchoolRepairSystem.Api\SchoolRepairSystem.Api.xml</DocumentationFile>
+    <NoWarn>1701;1702;1591</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.0.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Filters" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SchoolRepairSystem.Common\SchoolRepairSystem.Common.csproj" />
+    <ProjectReference Include="..\SchoolRepairSystem.Extensions\SchoolRepairSystem.Extensions.csproj" />
+    <ProjectReference Include="..\SchoolRepairSystem.IService\SchoolRepairSystem.IService.csproj" />
+    <ProjectReference Include="..\SchoolRepairSystem.Repository\SchoolRepairSystem.Repository.csproj" />
+    <ProjectReference Include="..\SchoolRepairSystem.Service\SchoolRepairSystem.Service.csproj" />
+    <ProjectReference Include="..\SchoolRepairSystemModels\SchoolRepairSystemModels.csproj" />
+  </ItemGroup>
+
+
+</Project>
