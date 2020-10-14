@@ -82,7 +82,7 @@ namespace SchoolRepairSystem.Repository
             List<T> list = new List<T>();
             foreach (long id in t)
             {
-                var entity = await _dbContext.Set<T>().FirstOrDefaultAsync(x => x.Id == id);
+                var entity = await _dbContext.Set<T>().FirstOrDefaultAsync(x => x.Id == id&&!x.IsRemove);
                 list.Add(entity);
             }
 

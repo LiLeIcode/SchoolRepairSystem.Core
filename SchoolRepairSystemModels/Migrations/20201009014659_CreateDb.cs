@@ -60,14 +60,14 @@ namespace SchoolRepairSystemModels.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "RoleWareHouses",
+                name: "UserWareHouses",
                 columns: table => new
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     DateTime = table.Column<DateTime>(nullable: false),
                     IsRemove = table.Column<bool>(nullable: false),
-                    RoleId = table.Column<long>(nullable: false),
+                    UserId = table.Column<long>(nullable: false),
                     GoodsId = table.Column<long>(nullable: false),
                     Goods = table.Column<string>(maxLength: 20, nullable: false),
                     Purchase = table.Column<int>(nullable: false),
@@ -75,7 +75,7 @@ namespace SchoolRepairSystemModels.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_RoleWareHouses", x => x.Id);
+                    table.PrimaryKey("PK_UserWareHouses", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -141,7 +141,7 @@ namespace SchoolRepairSystemModels.Migrations
                 name: "Roles");
 
             migrationBuilder.DropTable(
-                name: "RoleWareHouses");
+                name: "UserWareHouses");
 
             migrationBuilder.DropTable(
                 name: "UserRoles");

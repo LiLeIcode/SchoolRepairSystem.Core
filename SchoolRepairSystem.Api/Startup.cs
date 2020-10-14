@@ -52,6 +52,14 @@ namespace SchoolRepairSystem.Api
             services.AddScoped<IRolesRepository, RolesRepository>();
             services.AddScoped<IReportForRepairService, ReportForRepairService>();
             services.AddScoped<IReportForRepairRepository, ReportForRepairRepository>();
+            services.AddScoped<IWareHouseService, WareHouseService>();
+            services.AddScoped<IWareHouseRepository, WareHouseRepository>();
+            services.AddScoped<IUserWareHouseService, UserWareHouseService>();
+            services.AddScoped<IUserWareHouseRepository, UserWareHouseRepository>();
+            services.AddScoped<IReportForRepairService, ReportForRepairService>();
+            services.AddScoped<IReportForRepairRepository, ReportForRepairRepository>();
+            services.AddScoped<IRoleReportForRepairService, RoleReportForRepairService>();
+            services.AddScoped<IRoleReportForRepairRepository, RoleReportForRepairRepository>();
 
 
             services.AddSingleton(new Appsettings(Configuration));

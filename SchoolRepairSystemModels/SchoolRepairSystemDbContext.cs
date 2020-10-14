@@ -27,6 +27,6 @@ namespace SchoolRepairSystemModels
         public DbSet<ReportForRepair> ReportForRepairs { get; set; }
         public DbSet<RoleReportForRepair> RoleReportForRepairs { get; set; }
         public DbSet<WareHouse> WareHouses { get; set; }
-        public DbSet<RoleWareHouse> RoleWareHouses { get; set; }
+        public DbSet<UserWareHouse> UserWareHouses { get; set; }
     }
 }

@@ -43,6 +43,13 @@
             <param name="evaluate">0无,1好,2中,3差</param>
             <returns></returns>
         </member>
+        <member name="M:SchoolRepairSystem.Api.Controllers.RoleReportForRepairController.UpdateRoleReportForRepair(System.Int64)">
+            <summary>
+            职工接受报修
+            </summary>
+            <param name="roleReportForRepairId"></param>
+            <returns></returns>
+        </member>
         <member name="M:SchoolRepairSystem.Api.Controllers.UserController.GetUserList">
             <summary>
             获取所有用户账号信息
@@ -54,6 +61,49 @@
             更改user的数据
             </summary>
             <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SchoolRepairSystem.Api.Controllers.UserRoleController.UpdateUserRole(System.Int64,System.Int64)">
+            <summary>
+            赋角色，改角色
+            </summary>
+            <param name="userId"></param>
+            <param name="roleId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SchoolRepairSystem.Api.Controllers.UserRoleController.DeleteUserRole(System.Int64)">
+            <summary>
+            删除用户的角色
+            </summary>
+            <param name="userId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SchoolRepairSystem.Api.Controllers.WareHouseController.GetAddGoods(System.String,System.Int32)">
+            <summary>
+            仓库增加/新增商品
+            </summary>
+            <param name="goodsName"></param>
+            <param name="number"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SchoolRepairSystem.Api.Controllers.WareHouseController.UpdateTakeOutGoods(System.Int64,System.Int32)">
+            <summary>
+            取出货物
+            </summary>
+            <param name="goodsId">货物id</param>
+            <param name="number"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SchoolRepairSystem.Api.Controllers.WareHouseController.GetAllGoods">
+            <summary>
+            获取仓库
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SchoolRepairSystem.Api.Controllers.WareHouseController.GetAllAccessInfo">
+            <summary>
+            所有货物的存取信息
+            </summary>
             <returns></returns>
         </member>
     </members>

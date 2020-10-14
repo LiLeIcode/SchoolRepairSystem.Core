@@ -90,7 +90,7 @@ namespace SchoolRepairSystemModels.Migrations
                     b.ToTable("RoleReportForRepairs");
                 });
 
-            modelBuilder.Entity("SchoolRepairSystemModels.RoleWareHouse", b =>
+            modelBuilder.Entity("SchoolRepairSystemModels.UserWareHouse", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -117,12 +117,12 @@ namespace SchoolRepairSystemModels.Migrations
                     b.Property<int>("Purchase")
                         .HasColumnType("int");
 
-                    b.Property<long>("RoleId")
+                    b.Property<long>("UserId")
                         .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
-                    b.ToTable("RoleWareHouses");
+                    b.ToTable("UserWareHouses");
                 });
 
             modelBuilder.Entity("SchoolRepairSystemModels.Roles", b =>

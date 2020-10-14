@@ -4,7 +4,6 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using SchoolRepairSystem.Common.Helper;
@@ -40,12 +39,11 @@ namespace SchoolRepairSystem.Api.Controllers
             if (ModelState.IsValid)
             {
                 
-                var user = await _usersService.Query(x => x.UserName.Equals(model.UserName) && x.Password.Equals(model.Password));
-                var userRole = await _userRoleService.Query(x => x.UserId == user.Id);
-                var roles = await _rolesService.Query(x => x.Id == userRole.RoleId);
-
+                var user = _usersService.Query(x => x.UserName.Equals(model.UserName) && x.Password.Equals(model.Password)&&!x.IsRemove)?.Result;
                 if (user != null)
                 {
+                    var userRole = await _userRoleService.Query(x => x.UserId == user.Id);
+                    var roles = await _rolesService.Query(x => x.Id == userRole.RoleId);
                     string issuer = Appsettings.app(new[] { "PermissionRequirement", "Issuer" });
                     string audience = Appsettings.app(new[] { "PermissionRequirement", "Audience" });
                     string signingKey = Appsettings.app(new[] { "PermissionRequirement", "SigningCredentials" });

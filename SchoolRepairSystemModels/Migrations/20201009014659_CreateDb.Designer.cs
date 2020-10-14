@@ -92,7 +92,7 @@ namespace SchoolRepairSystemModels.Migrations
                     b.ToTable("RoleReportForRepairs");
                 });
 
-            modelBuilder.Entity("SchoolRepairSystemModels.RoleWareHouse", b =>
+            modelBuilder.Entity("SchoolRepairSystemModels.UserWareHouse", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -124,7 +124,7 @@ namespace SchoolRepairSystemModels.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("RoleWareHouses");
+                    b.ToTable("UserWareHouses");
                 });
 
             modelBuilder.Entity("SchoolRepairSystemModels.Roles", b =>
