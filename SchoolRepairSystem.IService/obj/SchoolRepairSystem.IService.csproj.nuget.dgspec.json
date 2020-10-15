@@ -30,8 +30,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "D:\\CSharperWeb\\SchoolRepairSystem\\SchoolRepairSystemModels\\SchoolRepairSystemModels.csproj": {
-                "projectPath": "D:\\CSharperWeb\\SchoolRepairSystem\\SchoolRepairSystemModels\\SchoolRepairSystemModels.csproj"
+              "D:\\CSharperWeb\\SchoolRepairSystem\\SchoolRepairSystem.Models\\SchoolRepairSystem.Models.csproj": {
+                "projectPath": "D:\\CSharperWeb\\SchoolRepairSystem\\SchoolRepairSystem.Models\\SchoolRepairSystem.Models.csproj"
               }
             }
           }
@@ -77,14 +77,14 @@
         }
       }
     },
-    "D:\\CSharperWeb\\SchoolRepairSystem\\SchoolRepairSystemModels\\SchoolRepairSystemModels.csproj": {
+    "D:\\CSharperWeb\\SchoolRepairSystem\\SchoolRepairSystem.Models\\SchoolRepairSystem.Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\CSharperWeb\\SchoolRepairSystem\\SchoolRepairSystemModels\\SchoolRepairSystemModels.csproj",
-        "projectName": "SchoolRepairSystemModels",
-        "projectPath": "D:\\CSharperWeb\\SchoolRepairSystem\\SchoolRepairSystemModels\\SchoolRepairSystemModels.csproj",
+        "projectUniqueName": "D:\\CSharperWeb\\SchoolRepairSystem\\SchoolRepairSystem.Models\\SchoolRepairSystem.Models.csproj",
+        "projectName": "SchoolRepairSystem.Models",
+        "projectPath": "D:\\CSharperWeb\\SchoolRepairSystem\\SchoolRepairSystem.Models\\SchoolRepairSystem.Models.csproj",
         "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-        "outputPath": "D:\\CSharperWeb\\SchoolRepairSystem\\SchoolRepairSystemModels\\obj\\",
+        "outputPath": "D:\\CSharperWeb\\SchoolRepairSystem\\SchoolRepairSystem.Models\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

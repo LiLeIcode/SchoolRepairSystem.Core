@@ -1,12 +1,12 @@
 ﻿using SchoolRepairSystem.IRepository;
 using SchoolRepairSystem.IService;
-using SchoolRepairSystemModels;
+using SchoolRepairSystem.Models;
 
 namespace SchoolRepairSystem.Service
 {
     public class ReportForRepairService:BaseService<ReportForRepair>, IReportForRepairService
     {
-        private IReportForRepairRepository _dal;
+        private readonly IReportForRepairRepository _dal;
 
         public ReportForRepairService(IReportForRepairRepository dal)
         {

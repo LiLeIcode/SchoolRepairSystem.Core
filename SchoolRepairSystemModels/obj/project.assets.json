@@ -5818,9 +5818,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\CSharperWeb\\SchoolRepairSystem\\SchoolRepairSystemModels\\SchoolRepairSystemModels.csproj",
-      "projectName": "SchoolRepairSystemModels",
-      "projectPath": "D:\\CSharperWeb\\SchoolRepairSystem\\SchoolRepairSystemModels\\SchoolRepairSystemModels.csproj",
+      "projectUniqueName": "D:\\CSharperWeb\\SchoolRepairSystem\\SchoolRepairSystemModels\\SchoolRepairSystem.Models.csproj",
+      "projectName": "SchoolRepairSystem.Models",
+      "projectPath": "D:\\CSharperWeb\\SchoolRepairSystem\\SchoolRepairSystemModels\\SchoolRepairSystem.Models.csproj",
       "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
       "outputPath": "D:\\CSharperWeb\\SchoolRepairSystem\\SchoolRepairSystemModels\\obj\\",
       "projectStyle": "PackageReference",

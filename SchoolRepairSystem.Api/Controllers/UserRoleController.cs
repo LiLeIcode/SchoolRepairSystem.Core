@@ -2,8 +2,8 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SchoolRepairSystem.IService;
-using SchoolRepairSystemModels;
-using SchoolRepairSystemModels.ViewModels;
+using SchoolRepairSystem.Models;
+using SchoolRepairSystem.Models.ViewModels;
 
 namespace SchoolRepairSystem.Api.Controllers
 {
@@ -55,19 +55,31 @@ namespace SchoolRepairSystem.Api.Controllers
         [Authorize(Policy = "Admin")]
         public async Task<ResponseMessage<bool>> DeleteUserRole(long userId)
         {
-            UserRole userRole = await _userRoleService.Query(x => x.UserId == userId);
-            userRole.IsRemove = false;
-            bool update = await _userRoleService.Update(userRole);
-            return update
-                ? new ResponseMessage<bool>()
-                {
-                    Msg = "删除成功",Success = true,Status = 200,ResponseInfo = true
-                }
-                : new ResponseMessage<bool>()
-                {
-                    Msg = "删除失败",
-                    Success = false
-                };
+            UserRole userRole = _userRoleService.Query(x => x.UserId == userId&&!x.IsRemove)?.Result;
+            if (userRole!=null)
+            {
+                userRole.IsRemove = false;
+                bool update = await _userRoleService.Update(userRole);
+                return update
+                    ? new ResponseMessage<bool>()
+                    {
+                        Msg = "删除成功",
+                        Success = true,
+                        Status = 200,
+                        ResponseInfo = true
+                    }
+                    : new ResponseMessage<bool>()
+                    {
+                        Msg = "删除失败",
+                        Success = false
+                    };
+            }
+            return new ResponseMessage<bool>()
+            {
+                Msg = "未找到，可能已删除",
+                Success = false,
+            };
+            
         }
 
 

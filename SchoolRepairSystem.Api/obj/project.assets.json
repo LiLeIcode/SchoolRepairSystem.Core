@@ -230,6 +230,22 @@
           "lib/netstandard2.0/_._": {}
         }
       },
+      "Microsoft.EntityFrameworkCore.Design/3.1.8": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.CSharp": "4.7.0",
+          "Microsoft.EntityFrameworkCore.Relational": "3.1.8"
+        },
+        "compile": {
+          "lib/netstandard2.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Design.dll": {}
+        },
+        "build": {
+          "build/netcoreapp2.0/Microsoft.EntityFrameworkCore.Design.props": {}
+        }
+      },
       "Microsoft.EntityFrameworkCore.Relational/3.1.8": {
         "type": "package",
         "dependencies": {
@@ -2470,7 +2486,7 @@
           "Autofac.Extras.DynamicProxy": "6.0.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "3.1.8",
           "SchoolRepairSystem.Common": "1.0.0",
-          "SchoolRepairSystemModels": "1.0.0",
+          "SchoolRepairSystem.Models": "1.0.0",
           "log4net": "2.0.11"
         },
         "compile": {
@@ -2487,7 +2503,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
-          "SchoolRepairSystemModels": "1.0.0"
+          "SchoolRepairSystem.Models": "1.0.0"
         },
         "compile": {
           "bin/placeholder/SchoolRepairSystem.IRepository.dll": {}
@@ -2500,13 +2516,28 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
-          "SchoolRepairSystemModels": "1.0.0"
+          "SchoolRepairSystem.Models": "1.0.0"
         },
         "compile": {
           "bin/placeholder/SchoolRepairSystem.IService.dll": {}
         },
         "runtime": {
           "bin/placeholder/SchoolRepairSystem.IService.dll": {}
+        }
+      },
+      "SchoolRepairSystem.Models/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "3.1.8",
+          "Microsoft.EntityFrameworkCore.SqlServer": "3.1.8",
+          "Microsoft.Extensions.Logging.Console": "3.1.8"
+        },
+        "compile": {
+          "bin/placeholder/SchoolRepairSystem.Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SchoolRepairSystem.Models.dll": {}
         }
       },
       "SchoolRepairSystem.Repository/1.0.0": {
@@ -2527,28 +2558,14 @@
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
           "SchoolRepairSystem.IRepository": "1.0.0",
-          "SchoolRepairSystem.IService": "1.0.0"
+          "SchoolRepairSystem.IService": "1.0.0",
+          "SchoolRepairSystem.Models": "1.0.0"
         },
         "compile": {
           "bin/placeholder/SchoolRepairSystem.Service.dll": {}
         },
         "runtime": {
           "bin/placeholder/SchoolRepairSystem.Service.dll": {}
-        }
-      },
-      "SchoolRepairSystemModels/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v3.1",
-        "dependencies": {
-          "Microsoft.EntityFrameworkCore": "3.1.8",
-          "Microsoft.EntityFrameworkCore.SqlServer": "3.1.8",
-          "Microsoft.Extensions.Logging.Console": "3.1.8"
-        },
-        "compile": {
-          "bin/placeholder/SchoolRepairSystemModels.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/SchoolRepairSystemModels.dll": {}
         }
       }
     }
@@ -2931,6 +2948,22 @@
         "lib/netstandard2.0/_._",
         "microsoft.entityframeworkcore.analyzers.3.1.8.nupkg.sha512",
         "microsoft.entityframeworkcore.analyzers.nuspec"
+      ]
+    },
+    "Microsoft.EntityFrameworkCore.Design/3.1.8": {
+      "sha512": "nFsL0L2CdadJ9dmSsmYlDZ1dFWQEr9zCWZ+oI4OOLtoS7gU2XPZiEhtvipAFzfSadx3XkteX/4fgdbM7wTub9A==",
+      "type": "package",
+      "path": "microsoft.entityframeworkcore.design/3.1.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "build/net461/Microsoft.EntityFrameworkCore.Design.props",
+        "build/netcoreapp2.0/Microsoft.EntityFrameworkCore.Design.props",
+        "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Design.dll",
+        "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Design.xml",
+        "microsoft.entityframeworkcore.design.3.1.8.nupkg.sha512",
+        "microsoft.entityframeworkcore.design.nuspec"
       ]
     },
     "Microsoft.EntityFrameworkCore.Relational/3.1.8": {
@@ -8178,6 +8211,11 @@
       "path": "../SchoolRepairSystem.IService/SchoolRepairSystem.IService.csproj",
       "msbuildProject": "../SchoolRepairSystem.IService/SchoolRepairSystem.IService.csproj"
     },
+    "SchoolRepairSystem.Models/1.0.0": {
+      "type": "project",
+      "path": "../SchoolRepairSystem.Models/SchoolRepairSystem.Models.csproj",
+      "msbuildProject": "../SchoolRepairSystem.Models/SchoolRepairSystem.Models.csproj"
+    },
     "SchoolRepairSystem.Repository/1.0.0": {
       "type": "project",
       "path": "../SchoolRepairSystem.Repository/SchoolRepairSystem.Repository.csproj",
@@ -8187,22 +8225,18 @@
       "type": "project",
       "path": "../SchoolRepairSystem.Service/SchoolRepairSystem.Service.csproj",
       "msbuildProject": "../SchoolRepairSystem.Service/SchoolRepairSystem.Service.csproj"
-    },
-    "SchoolRepairSystemModels/1.0.0": {
-      "type": "project",
-      "path": "../SchoolRepairSystemModels/SchoolRepairSystemModels.csproj",
-      "msbuildProject": "../SchoolRepairSystemModels/SchoolRepairSystemModels.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 8.0.1",
+      "Microsoft.EntityFrameworkCore.Design >= 3.1.8",
       "SchoolRepairSystem.Common >= 1.0.0",
       "SchoolRepairSystem.Extensions >= 1.0.0",
       "SchoolRepairSystem.IService >= 1.0.0",
+      "SchoolRepairSystem.Models >= 1.0.0",
       "SchoolRepairSystem.Repository >= 1.0.0",
       "SchoolRepairSystem.Service >= 1.0.0",
-      "SchoolRepairSystemModels >= 1.0.0",
       "Swashbuckle.AspNetCore >= 5.6.3",
       "Swashbuckle.AspNetCore.Filters >= 6.0.0"
     ]
@@ -8246,14 +8280,14 @@
             "D:\\CSharperWeb\\SchoolRepairSystem\\SchoolRepairSystem.IService\\SchoolRepairSystem.IService.csproj": {
               "projectPath": "D:\\CSharperWeb\\SchoolRepairSystem\\SchoolRepairSystem.IService\\SchoolRepairSystem.IService.csproj"
             },
+            "D:\\CSharperWeb\\SchoolRepairSystem\\SchoolRepairSystem.Models\\SchoolRepairSystem.Models.csproj": {
+              "projectPath": "D:\\CSharperWeb\\SchoolRepairSystem\\SchoolRepairSystem.Models\\SchoolRepairSystem.Models.csproj"
+            },
             "D:\\CSharperWeb\\SchoolRepairSystem\\SchoolRepairSystem.Repository\\SchoolRepairSystem.Repository.csproj": {
               "projectPath": "D:\\CSharperWeb\\SchoolRepairSystem\\SchoolRepairSystem.Repository\\SchoolRepairSystem.Repository.csproj"
             },
             "D:\\CSharperWeb\\SchoolRepairSystem\\SchoolRepairSystem.Service\\SchoolRepairSystem.Service.csproj": {
               "projectPath": "D:\\CSharperWeb\\SchoolRepairSystem\\SchoolRepairSystem.Service\\SchoolRepairSystem.Service.csproj"
-            },
-            "D:\\CSharperWeb\\SchoolRepairSystem\\SchoolRepairSystemModels\\SchoolRepairSystemModels.csproj": {
-              "projectPath": "D:\\CSharperWeb\\SchoolRepairSystem\\SchoolRepairSystemModels\\SchoolRepairSystemModels.csproj"
             }
           }
         }
@@ -8270,6 +8304,12 @@
           "AutoMapper.Extensions.Microsoft.DependencyInjection": {
             "target": "Package",
             "version": "[8.0.1, )"
+          },
+          "Microsoft.EntityFrameworkCore.Design": {
+            "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+            "suppressParent": "All",
+            "target": "Package",
+            "version": "[3.1.8, )"
           },
           "Swashbuckle.AspNetCore": {
             "target": "Package",

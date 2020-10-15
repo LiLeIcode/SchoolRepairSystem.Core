@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "AlB7P0ZqD+QXoZhTfESJ1Hhl1pkvgRGkYPFjGoW3ZxoFVw9KuWPHCUkh1NUOKI/CC5hIsEUsbF2W2avQXjRBCw==",
+  "dgSpecHash": "cQfjoRDOgw7RmVpBOknrvZF+1Z4OCu62KeL+lMD7PpA9ycaj9kAR5c76rH85/5VO+c/cSeVAF61IjB6NZxysuw==",
   "success": true,
   "projectFilePath": "D:\\CSharperWeb\\SchoolRepairSystem\\SchoolRepairSystem.Api\\SchoolRepairSystem.Api.csproj",
   "expectedPackageFiles": [
@@ -20,6 +20,7 @@
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.entityframeworkcore\\3.1.8\\microsoft.entityframeworkcore.3.1.8.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\3.1.8\\microsoft.entityframeworkcore.abstractions.3.1.8.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\3.1.8\\microsoft.entityframeworkcore.analyzers.3.1.8.nupkg.sha512",
+    "C:\\Users\\admin\\.nuget\\packages\\microsoft.entityframeworkcore.design\\3.1.8\\microsoft.entityframeworkcore.design.3.1.8.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\3.1.8\\microsoft.entityframeworkcore.relational.3.1.8.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\3.1.8\\microsoft.entityframeworkcore.sqlserver.3.1.8.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",

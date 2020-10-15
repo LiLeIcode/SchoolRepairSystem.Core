@@ -14,11 +14,20 @@ namespace SchoolRepairSystem.Extensions.Authorizations
             if (claim!=null)
             {
                 string value = claim.Value;
-                if (value==requirement.RoleName)
-                {
+                //"admin,Ordinary",拆分处理
+                //string[] role = value.Split(",");
+                //foreach (string s in role)
+                //{
+                //    if (s == requirement.RoleName)
+                //    {
+                //        context.Succeed(requirement);
+                //        break;
+                //    }
+                //}
+                if (value == requirement.RoleName)
                     context.Succeed(requirement);
-                }
             }
+
             return Task.CompletedTask;
         }
 

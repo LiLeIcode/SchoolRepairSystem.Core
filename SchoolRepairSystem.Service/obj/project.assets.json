@@ -1514,7 +1514,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
-          "SchoolRepairSystemModels": "1.0.0"
+          "SchoolRepairSystem.Models": "1.0.0"
         },
         "compile": {
           "bin/placeholder/SchoolRepairSystem.IRepository.dll": {}
@@ -1527,7 +1527,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
-          "SchoolRepairSystemModels": "1.0.0"
+          "SchoolRepairSystem.Models": "1.0.0"
         },
         "compile": {
           "bin/placeholder/SchoolRepairSystem.IService.dll": {}
@@ -1536,7 +1536,7 @@
           "bin/placeholder/SchoolRepairSystem.IService.dll": {}
         }
       },
-      "SchoolRepairSystemModels/1.0.0": {
+      "SchoolRepairSystem.Models/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
@@ -1545,10 +1545,10 @@
           "Microsoft.Extensions.Logging.Console": "3.1.8"
         },
         "compile": {
-          "bin/placeholder/SchoolRepairSystemModels.dll": {}
+          "bin/placeholder/SchoolRepairSystem.Models.dll": {}
         },
         "runtime": {
-          "bin/placeholder/SchoolRepairSystemModels.dll": {}
+          "bin/placeholder/SchoolRepairSystem.Models.dll": {}
         }
       }
     }
@@ -5783,16 +5783,17 @@
       "path": "../SchoolRepairSystem.IService/SchoolRepairSystem.IService.csproj",
       "msbuildProject": "../SchoolRepairSystem.IService/SchoolRepairSystem.IService.csproj"
     },
-    "SchoolRepairSystemModels/1.0.0": {
+    "SchoolRepairSystem.Models/1.0.0": {
       "type": "project",
-      "path": "../SchoolRepairSystemModels/SchoolRepairSystemModels.csproj",
-      "msbuildProject": "../SchoolRepairSystemModels/SchoolRepairSystemModels.csproj"
+      "path": "../SchoolRepairSystem.Models/SchoolRepairSystem.Models.csproj",
+      "msbuildProject": "../SchoolRepairSystem.Models/SchoolRepairSystem.Models.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
       "SchoolRepairSystem.IRepository >= 1.0.0",
-      "SchoolRepairSystem.IService >= 1.0.0"
+      "SchoolRepairSystem.IService >= 1.0.0",
+      "SchoolRepairSystem.Models >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -5830,6 +5831,9 @@
             },
             "D:\\CSharperWeb\\SchoolRepairSystem\\SchoolRepairSystem.IService\\SchoolRepairSystem.IService.csproj": {
               "projectPath": "D:\\CSharperWeb\\SchoolRepairSystem\\SchoolRepairSystem.IService\\SchoolRepairSystem.IService.csproj"
+            },
+            "D:\\CSharperWeb\\SchoolRepairSystem\\SchoolRepairSystem.Models\\SchoolRepairSystem.Models.csproj": {
+              "projectPath": "D:\\CSharperWeb\\SchoolRepairSystem\\SchoolRepairSystem.Models\\SchoolRepairSystem.Models.csproj"
             }
           }
         }

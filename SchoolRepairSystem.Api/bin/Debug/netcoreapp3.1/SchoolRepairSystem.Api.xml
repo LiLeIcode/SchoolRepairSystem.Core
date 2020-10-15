@@ -4,7 +4,7 @@
         <name>SchoolRepairSystem.Api</name>
     </assembly>
     <members>
-        <member name="M:SchoolRepairSystem.Api.Controllers.LoginController.PostToken(SchoolRepairSystemModels.ViewModels.LoginUser)">
+        <member name="M:SchoolRepairSystem.Api.Controllers.LoginController.PostToken(SchoolRepairSystem.Models.ViewModels.LoginUser)">
             <summary>
             登录
             </summary>
@@ -15,14 +15,20 @@
             数据库表为建立，独立表，与其他表无关联
             根据授权策略分权访问
         </member>
-        <member name="M:SchoolRepairSystem.Api.Controllers.RegisterController.PostAddUser(SchoolRepairSystemModels.ViewModels.RegisterUserViewModel)">
+        <member name="M:SchoolRepairSystem.Api.Controllers.MenuController.GetMenu">
+            <summary>
+            获取菜单
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SchoolRepairSystem.Api.Controllers.RegisterController.PostAddUser(SchoolRepairSystem.Models.ViewModels.RegisterUserViewModel)">
             <summary>
             普通注册
             </summary>
             <param name="model"></param>
             <returns></returns>
         </member>
-        <member name="M:SchoolRepairSystem.Api.Controllers.RepairController.GetReportForPair(SchoolRepairSystemModels.ViewModels.RepairViewModel)">
+        <member name="M:SchoolRepairSystem.Api.Controllers.RepairController.GetReportForPair(SchoolRepairSystem.Models.ViewModels.RepairViewModel)">
             <summary>
             报修
             </summary>
@@ -37,10 +43,16 @@
         </member>
         <member name="M:SchoolRepairSystem.Api.Controllers.RepairController.PostComment(System.Int64,System.Int32)">
             <summary>
-            填写已完成的评论
+            填写已完成报修的评论
             </summary>
             <param name="reportForRepairId"></param>
             <param name="evaluate">0无,1好,2中,3差</param>
+            <returns></returns>
+        </member>
+        <member name="M:SchoolRepairSystem.Api.Controllers.RepairController.GetAllRepair">
+            <summary>
+            获取所有的报修记录
+            </summary>
             <returns></returns>
         </member>
         <member name="M:SchoolRepairSystem.Api.Controllers.RoleReportForRepairController.UpdateRoleReportForRepair(System.Int64)">
@@ -50,13 +62,26 @@
             <param name="roleReportForRepairId"></param>
             <returns></returns>
         </member>
+        <member name="M:SchoolRepairSystem.Api.Controllers.RoleReportForRepairController.GetMyTask">
+            <summary>
+            查看自己接了哪些单
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SchoolRepairSystem.Api.Controllers.RoleReportForRepairController.UpdateMyTask(System.Int64)">
+            <summary>
+            完成任务
+            </summary>
+            <param name="repairId"></param>
+            <returns></returns>
+        </member>
         <member name="M:SchoolRepairSystem.Api.Controllers.UserController.GetUserList">
             <summary>
             获取所有用户账号信息
             </summary>
             <returns></returns>
         </member>
-        <member name="M:SchoolRepairSystem.Api.Controllers.UserController.UpdateUserInfo(SchoolRepairSystemModels.ViewModels.UserViewModel)">
+        <member name="M:SchoolRepairSystem.Api.Controllers.UserController.UpdateUserInfo(SchoolRepairSystem.Models.ViewModels.UserViewModel)">
             <summary>
             更改user的数据
             </summary>

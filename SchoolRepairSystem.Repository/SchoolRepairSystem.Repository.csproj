@@ -9,6 +9,12 @@
     <ProjectReference Include="..\SchoolRepairSystem.IRepository\SchoolRepairSystem.IRepository.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="SchoolRepairSystem.Models">
+      <HintPath>..\SchoolRepairSystem.Models\bin\Debug\netcoreapp3.1\SchoolRepairSystem.Models.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
   
 
 </Project>

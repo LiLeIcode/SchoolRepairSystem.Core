@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
-using SchoolRepairSystemModels.ViewModels;
+using SchoolRepairSystem.Models.ViewModels;
 
 namespace SchoolRepairSystem.Extensions.Authorizations
 {

@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using SchoolRepairSystem.IRepository;
 using SchoolRepairSystem.IRepository.UnitWork;
-using SchoolRepairSystemModels;
+using SchoolRepairSystem.Models;
 
 namespace SchoolRepairSystem.Repository
 {
@@ -34,9 +34,13 @@ namespace SchoolRepairSystem.Repository
 
         public async Task<int> Add(List<T> t)
         {
-            ValueTask<EntityEntry<List<T>>> addList = _dbContext.Set<List<T>>().AddAsync(t);
-            await _dbContext.SaveChangesAsync();
-            return addList.Result.Entity.Count;
+            foreach (T entity in t)
+            {
+                await _dbContext.Set<T>().AddAsync(entity);
+            }
+
+            int saveChangesAsync = await _dbContext.SaveChangesAsync();
+            return saveChangesAsync;
         }
 
         public async Task<bool> Delete(long id)

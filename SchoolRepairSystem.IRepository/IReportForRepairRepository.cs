@@ -1,4 +1,4 @@
-﻿using SchoolRepairSystemModels;
+﻿using SchoolRepairSystem.Models;
 
 namespace SchoolRepairSystem.IRepository
 {

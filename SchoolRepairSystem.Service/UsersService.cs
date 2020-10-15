@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using SchoolRepairSystem.IRepository;
 using SchoolRepairSystem.IService;
-using SchoolRepairSystemModels;
+using SchoolRepairSystem.Models;
 
 namespace SchoolRepairSystem.Service
 {

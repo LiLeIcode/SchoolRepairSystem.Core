@@ -16,7 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SchoolRepairSystem.Common\SchoolRepairSystem.Common.csproj" />
-    <ProjectReference Include="..\SchoolRepairSystemModels\SchoolRepairSystemModels.csproj" />
+    <ProjectReference Include="..\SchoolRepairSystem.Models\SchoolRepairSystem.Models.csproj" />
   </ItemGroup>
 
 </Project>

@@ -7,10 +7,10 @@ D:\CSharperWeb\SchoolRepairSystem\SchoolRepairSystem.Service\bin\Debug\netcoreap
 D:\CSharperWeb\SchoolRepairSystem\SchoolRepairSystem.Service\bin\Debug\netcoreapp3.1\SchoolRepairSystem.Service.pdb
 D:\CSharperWeb\SchoolRepairSystem\SchoolRepairSystem.Service\bin\Debug\netcoreapp3.1\SchoolRepairSystem.IRepository.dll
 D:\CSharperWeb\SchoolRepairSystem\SchoolRepairSystem.Service\bin\Debug\netcoreapp3.1\SchoolRepairSystem.IService.dll
-D:\CSharperWeb\SchoolRepairSystem\SchoolRepairSystem.Service\bin\Debug\netcoreapp3.1\SchoolRepairSystemModels.dll
 D:\CSharperWeb\SchoolRepairSystem\SchoolRepairSystem.Service\bin\Debug\netcoreapp3.1\SchoolRepairSystem.IRepository.pdb
 D:\CSharperWeb\SchoolRepairSystem\SchoolRepairSystem.Service\bin\Debug\netcoreapp3.1\SchoolRepairSystem.IService.pdb
-D:\CSharperWeb\SchoolRepairSystem\SchoolRepairSystem.Service\bin\Debug\netcoreapp3.1\SchoolRepairSystemModels.pdb
 D:\CSharperWeb\SchoolRepairSystem\SchoolRepairSystem.Service\obj\Debug\netcoreapp3.1\SchoolRepairSystem.Service.csproj.CopyComplete
 D:\CSharperWeb\SchoolRepairSystem\SchoolRepairSystem.Service\obj\Debug\netcoreapp3.1\SchoolRepairSystem.Service.dll
 D:\CSharperWeb\SchoolRepairSystem\SchoolRepairSystem.Service\obj\Debug\netcoreapp3.1\SchoolRepairSystem.Service.pdb
+D:\CSharperWeb\SchoolRepairSystem\SchoolRepairSystem.Service\bin\Debug\netcoreapp3.1\SchoolRepairSystem.Models.dll
+D:\CSharperWeb\SchoolRepairSystem\SchoolRepairSystem.Service\bin\Debug\netcoreapp3.1\SchoolRepairSystem.Models.pdb

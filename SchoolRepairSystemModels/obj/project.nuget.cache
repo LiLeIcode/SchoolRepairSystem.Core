@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "FfR/SdWw5Ie7bleVWhrrRIS3XtICKk2RINNQjxO4Ca1VrdQitMNQD00xcoNUY/BgwM+2g9VLd0miFbsY0fiKLg==",
+  "dgSpecHash": "G6eM5dkomh+7+Az30ODkHoUKOf74DenPjigzaL0jAGQ2UAF+d0+T/AYOluWdw5uQtJfof+XJqbFcztvzypMy1Q==",
   "success": true,
-  "projectFilePath": "D:\\CSharperWeb\\SchoolRepairSystem\\SchoolRepairSystemModels\\SchoolRepairSystemModels.csproj",
+  "projectFilePath": "D:\\CSharperWeb\\SchoolRepairSystem\\SchoolRepairSystemModels\\SchoolRepairSystem.Models.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",

@@ -9,8 +9,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SchoolRepairSystem.IService;
-using SchoolRepairSystemModels;
-using SchoolRepairSystemModels.ViewModels;
+using SchoolRepairSystem.Models;
+using SchoolRepairSystem.Models.ViewModels;
 
 namespace SchoolRepairSystem.Api.Controllers
 {
@@ -37,7 +37,7 @@ namespace SchoolRepairSystem.Api.Controllers
         /// <returns></returns>
         [Route("acceptRepairApplication")]
         [HttpGet]
-        [Authorize(Policy = "Admin")]
+        [Authorize(Policy = "Carpentry")]//Carpentry Electrician
         public async Task<ResponseMessage<RoleReportForRepairViewModel>> UpdateRoleReportForRepair(long roleReportForRepairId)
         {
             ClaimsPrincipal principal = HttpContext.User;
@@ -86,7 +86,7 @@ namespace SchoolRepairSystem.Api.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("myTask")]
-        [Authorize(Policy = "Admin")]
+        [Authorize(Policy = "Carpentry")]
         public async Task<ResponseMessage<List<ReportForRepairViewModel>>> GetMyTask()
         {
             string jti = HttpContext.User.FindFirst(x => x.Type == Microsoft.IdentityModel.JsonWebTokens.JwtRegisteredClaimNames.Jti)
@@ -115,6 +115,59 @@ namespace SchoolRepairSystem.Api.Controllers
                 Success = true
             };
             
+        }
+        /// <summary>
+        /// 完成任务
+        /// </summary>
+        /// <param name="repairId"></param>
+        /// <returns></returns>
+        [Route("completeTask")]
+        [HttpGet]
+        [Authorize(Policy = "Carpentry")]
+        public async Task<ResponseMessage<string>> UpdateMyTask(long repairId)
+        {
+            ReportForRepair reportForRepair = _reportForRepairService.QueryById(repairId)?.Result;
+            if (reportForRepair != null) 
+            {
+                if (reportForRepair.WaitHandle==0)
+                {
+                    return new ResponseMessage<string>()
+                    {
+                        Msg = "该任务还未被人接受处理",
+                        Success = false
+                    };
+                    
+                }
+
+                if (reportForRepair.WaitHandle==2)
+                {
+                    return new ResponseMessage<string>()
+                    {
+                        Msg = "该任务已被完成",
+                        Success = false
+                    };
+                }
+
+                reportForRepair.WaitHandle = 2;
+                bool update = await _reportForRepairService.Update(reportForRepair);
+                return update
+                    ? new ResponseMessage<string>()
+                    {
+                        Msg = "成功提交，已完成",
+                        Success = true,
+                        Status=200
+                    }
+                    : new ResponseMessage<string>()
+                    {
+                        Msg = "提交失败",
+                        Success = false
+                    };
+            }
+            return new ResponseMessage<string>()
+            {
+                Msg = "没有该任务",
+                Success = false
+            };
         }
     }
 }

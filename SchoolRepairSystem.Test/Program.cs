@@ -10,31 +10,100 @@ using SchoolRepairSystem.IService;
 using SchoolRepairSystem.Repository;
 using SchoolRepairSystem.Repository.UnitWork;
 using SchoolRepairSystem.Service;
-using SchoolRepairSystemModels;
+using SchoolRepairSystem.Models;
 
 namespace SchoolRepairSystem.Test
 {
-     class JoinInfo
+    class JoinInfo
     {
         public long Id { get; set; }
         public long QueryId { get; set; }
     }
 
-     class JoinCount
+    class JoinCount
     {
         public long Id { get; set; }
         public string RoleName { get; set; }
     }
 
-    
+
     class Program
     {
-        
+
         static async Task Main(string[] args)
         {
-            UsersService usersService = new UsersService(new UsersRepository());
-            Users query = await usersService.Query(x => x.UserName.Equals("lilei"));
-            Console.WriteLine(query.UserName);
+            //UsersService usersService = new UsersService(new UsersRepository());
+            //Users query = await usersService.Query(x => x.UserName.Equals("lilei"));
+            //Console.WriteLine(query.UserName);
+
+            #region 分离字符串
+
+            string roleName = "admin,Carpentry,Electrician,Ordinary";
+            string[] split = roleName.Split(',');
+            foreach (string s in split)
+            {
+                Console.WriteLine(s);
+
+            }
+
+            #endregion
+
+
+            #region 加点菜单
+
+            //IMenuService menuService = new MenuService(new MenuRepository());
+            //long add = await menuService.Add(new List<Menus>()
+            //{
+            //    new Menus()
+            //    {
+            //        MenuName = "查看所有报修",
+            //        Grade = 1,
+            //        Path = "allRepairs"
+            //    },new Menus()
+            //    {
+            //        MenuName = "查看完成报修",
+            //        Grade = 1,
+            //        Path = "allCompletedRepair"
+            //    },
+            //    new Menus()
+            //    {
+            //        MenuName = "进出货",
+            //        Grade = 1,
+            //        Path = "importAndExport"
+            //    },
+            //    new Menus()
+            //    {
+            //        MenuName = "进出货记录",
+            //        Grade = 1,
+            //        Path = "importAndExportInfo"
+            //    },
+            //    new Menus()
+            //    {
+            //        MenuName = "权限管理",
+            //        Grade = 1,
+            //        Path = "power"
+            //    },
+            //    new Menus()
+            //    {
+            //    MenuName = "修改用户信息",
+            //    Grade = 1,
+            //    Path = "modifyEmployee",
+            //},new Menus()
+            //    {
+            //        MenuName = "修改用户信息",
+            //        Grade = 1,
+            //        Path = "allEmployeeInfo",
+            //    },
+            //    new Menus()
+            //    {
+            //        MenuName = "数据报表",
+            //        Grade = 1,
+            //        Path = "dataReport",
+            //    }
+            //});
+
+
+            #endregion
 
 
             #region 测试封装的泛型三表联合查询

@@ -7,8 +7,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SchoolRepairSystem.IService;
-using SchoolRepairSystemModels;
-using SchoolRepairSystemModels.ViewModels;
+using SchoolRepairSystem.Models;
+using SchoolRepairSystem.Models.ViewModels;
 
 namespace SchoolRepairSystem.Api.Controllers
 {
@@ -95,7 +95,7 @@ namespace SchoolRepairSystem.Api.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("takeOutGoods")]
-        [Authorize(Policy = "Admin")]
+        [Authorize(Policy = "Carpentry")]//Carpentry Electrician
         public async Task<ResponseMessage<long>> UpdateTakeOutGoods(long goodsId,int number)
         {
             WareHouse wareHouse = _wareHouseService.QueryById(goodsId)?.Result;
@@ -144,7 +144,7 @@ namespace SchoolRepairSystem.Api.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("allGoods")]
-        [Authorize(Policy = "Admin")]
+        [Authorize(Policy = "Admin")]//Carpentry Electrician Admin
         public ResponseMessage<List<GoodsInfoViewModel>> GetAllGoods()
         {
             List<WareHouse> wareHouses = _wareHouseService.QueryAll()?.Result;

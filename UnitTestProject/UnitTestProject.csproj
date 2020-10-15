@@ -17,7 +17,7 @@
     <ProjectReference Include="..\SchoolRepairSystem.IService\SchoolRepairSystem.IService.csproj" />
     <ProjectReference Include="..\SchoolRepairSystem.Repository\SchoolRepairSystem.Repository.csproj" />
     <ProjectReference Include="..\SchoolRepairSystem.Service\SchoolRepairSystem.Service.csproj" />
-    <ProjectReference Include="..\SchoolRepairSystemModels\SchoolRepairSystemModels.csproj" />
+    <ProjectReference Include="..\SchoolRepairSystem.Models\SchoolRepairSystem.Models.csproj" />
   </ItemGroup>
 
 </Project>

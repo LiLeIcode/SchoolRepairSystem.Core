@@ -12,9 +12,9 @@
           "MSTest.TestFramework": "2.1.0",
           "Microsoft.NET.Test.Sdk": "16.5.0",
           "SchoolRepairSystem.IService": "1.0.0",
+          "SchoolRepairSystem.Models": "1.0.0",
           "SchoolRepairSystem.Repository": "1.0.0",
           "SchoolRepairSystem.Service": "1.0.0",
-          "SchoolRepairSystemModels": "1.0.0",
           "coverlet.collector": "1.2.0"
         },
         "runtime": {
@@ -1687,7 +1687,7 @@
       },
       "SchoolRepairSystem.IRepository/1.0.0": {
         "dependencies": {
-          "SchoolRepairSystemModels": "1.0.0"
+          "SchoolRepairSystem.Models": "1.0.0"
         },
         "runtime": {
           "SchoolRepairSystem.IRepository.dll": {}
@@ -1695,10 +1695,20 @@
       },
       "SchoolRepairSystem.IService/1.0.0": {
         "dependencies": {
-          "SchoolRepairSystemModels": "1.0.0"
+          "SchoolRepairSystem.Models": "1.0.0"
         },
         "runtime": {
           "SchoolRepairSystem.IService.dll": {}
+        }
+      },
+      "SchoolRepairSystem.Models/1.0.0": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "3.1.8",
+          "Microsoft.EntityFrameworkCore.SqlServer": "3.1.8",
+          "Microsoft.Extensions.Logging.Console": "3.1.8"
+        },
+        "runtime": {
+          "SchoolRepairSystem.Models.dll": {}
         }
       },
       "SchoolRepairSystem.Repository/1.0.0": {
@@ -1712,20 +1722,11 @@
       "SchoolRepairSystem.Service/1.0.0": {
         "dependencies": {
           "SchoolRepairSystem.IRepository": "1.0.0",
-          "SchoolRepairSystem.IService": "1.0.0"
+          "SchoolRepairSystem.IService": "1.0.0",
+          "SchoolRepairSystem.Models": "1.0.0"
         },
         "runtime": {
           "SchoolRepairSystem.Service.dll": {}
-        }
-      },
-      "SchoolRepairSystemModels/1.0.0": {
-        "dependencies": {
-          "Microsoft.EntityFrameworkCore": "3.1.8",
-          "Microsoft.EntityFrameworkCore.SqlServer": "3.1.8",
-          "Microsoft.Extensions.Logging.Console": "3.1.8"
-        },
-        "runtime": {
-          "SchoolRepairSystemModels.dll": {}
         }
       }
     }
@@ -2747,17 +2748,17 @@
       "serviceable": false,
       "sha512": ""
     },
+    "SchoolRepairSystem.Models/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
     "SchoolRepairSystem.Repository/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
     "SchoolRepairSystem.Service/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "SchoolRepairSystemModels/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

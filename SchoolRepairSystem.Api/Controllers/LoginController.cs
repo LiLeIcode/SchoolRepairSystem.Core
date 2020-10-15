@@ -9,7 +9,7 @@ using Microsoft.IdentityModel.Tokens;
 using SchoolRepairSystem.Common.Helper;
 using SchoolRepairSystem.Extensions.Authorizations;
 using SchoolRepairSystem.IService;
-using SchoolRepairSystemModels.ViewModels;
+using SchoolRepairSystem.Models.ViewModels;
 
 namespace SchoolRepairSystem.Api.Controllers
 {
@@ -66,7 +66,12 @@ namespace SchoolRepairSystem.Api.Controllers
                         ResponseInfo = token
                     };
                 }
-                
+                return new ResponseMessage<TokenInfoViewModel>()
+                {
+                    Msg = "没有该用户",
+                    Success = false,
+                };
+
             }
             return new ResponseMessage<TokenInfoViewModel>()
             {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
-using SchoolRepairSystemModels;
+using SchoolRepairSystem.Models;
 
 namespace SchoolRepairSystem.IRepository.UnitWork
 {

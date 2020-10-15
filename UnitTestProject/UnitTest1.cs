@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SchoolRepairSystem.IService;
 using SchoolRepairSystem.Repository;
 using SchoolRepairSystem.Service;
-using SchoolRepairSystemModels;
+using SchoolRepairSystem.Models;
 
 namespace UnitTestProject
 {

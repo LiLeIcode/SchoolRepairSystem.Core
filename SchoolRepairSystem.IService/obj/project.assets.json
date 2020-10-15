@@ -1510,7 +1510,7 @@
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "SchoolRepairSystemModels/1.0.0": {
+      "SchoolRepairSystem.Models/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
@@ -1519,10 +1519,10 @@
           "Microsoft.Extensions.Logging.Console": "3.1.8"
         },
         "compile": {
-          "bin/placeholder/SchoolRepairSystemModels.dll": {}
+          "bin/placeholder/SchoolRepairSystem.Models.dll": {}
         },
         "runtime": {
-          "bin/placeholder/SchoolRepairSystemModels.dll": {}
+          "bin/placeholder/SchoolRepairSystem.Models.dll": {}
         }
       }
     }
@@ -5747,15 +5747,15 @@
         "system.xml.xmlserializer.nuspec"
       ]
     },
-    "SchoolRepairSystemModels/1.0.0": {
+    "SchoolRepairSystem.Models/1.0.0": {
       "type": "project",
-      "path": "../SchoolRepairSystemModels/SchoolRepairSystemModels.csproj",
-      "msbuildProject": "../SchoolRepairSystemModels/SchoolRepairSystemModels.csproj"
+      "path": "../SchoolRepairSystem.Models/SchoolRepairSystem.Models.csproj",
+      "msbuildProject": "../SchoolRepairSystem.Models/SchoolRepairSystem.Models.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "SchoolRepairSystemModels >= 1.0.0"
+      "SchoolRepairSystem.Models >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -5788,8 +5788,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "D:\\CSharperWeb\\SchoolRepairSystem\\SchoolRepairSystemModels\\SchoolRepairSystemModels.csproj": {
-              "projectPath": "D:\\CSharperWeb\\SchoolRepairSystem\\SchoolRepairSystemModels\\SchoolRepairSystemModels.csproj"
+            "D:\\CSharperWeb\\SchoolRepairSystem\\SchoolRepairSystem.Models\\SchoolRepairSystem.Models.csproj": {
+              "projectPath": "D:\\CSharperWeb\\SchoolRepairSystem\\SchoolRepairSystem.Models\\SchoolRepairSystem.Models.csproj"
             }
           }
         }

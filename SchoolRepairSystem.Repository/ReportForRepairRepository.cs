@@ -1,7 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
-using SchoolRepairSystem.IRepository;
+﻿using SchoolRepairSystem.IRepository;
 using SchoolRepairSystem.IRepository.UnitWork;
-using SchoolRepairSystemModels;
+using SchoolRepairSystem.Models;
 
 namespace SchoolRepairSystem.Repository
 {

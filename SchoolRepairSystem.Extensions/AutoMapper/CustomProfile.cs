@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using SchoolRepairSystemModels;
-using SchoolRepairSystemModels.ViewModels;
+using SchoolRepairSystem.Models;
+using SchoolRepairSystem.Models.ViewModels;
 
 namespace SchoolRepairSystem.Extensions.AutoMapper
 {

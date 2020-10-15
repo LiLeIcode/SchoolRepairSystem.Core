@@ -59,7 +59,9 @@ namespace SchoolRepairSystem.Api
             services.AddScoped<IReportForRepairService, ReportForRepairService>();
             services.AddScoped<IReportForRepairRepository, ReportForRepairRepository>();
             services.AddScoped<IRoleReportForRepairService, RoleReportForRepairService>();
+            services.AddScoped<IMenuService, MenuService>();
             services.AddScoped<IRoleReportForRepairRepository, RoleReportForRepairRepository>();
+            services.AddScoped<IMenuRepository, MenuRepository>();
 
 
             services.AddSingleton(new Appsettings(Configuration));
@@ -116,12 +118,16 @@ namespace SchoolRepairSystem.Api
             //    issuer: issuer,
             //    signingCredentials: signingCredentials,
             //    timeSpan: TimeSpan.FromSeconds(60 * 60));
-            services.AddAuthorizationCore(options =>
+            services.AddAuthorization(options =>
             {
                 options.AddPolicy("Admin", policy => policy.Requirements.Add(PolicyType.AdminPolicy()));
                 options.AddPolicy("Carpentry", policy => policy.Requirements.Add(PolicyType.CarpentryPolicy()));
                 options.AddPolicy("Electrician", policy => policy.Requirements.Add(PolicyType.ElectricianPolicy()));
                 options.AddPolicy("Ordinary", policy => policy.Requirements.Add(PolicyType.OrdinaryPolicy()));
+
+
+
+                options.AddPolicy("test", policy=>policy.AddRequirements(new []{  PolicyType.AdminPolicy(), PolicyType.OrdinaryPolicy() }));
             });
 
 

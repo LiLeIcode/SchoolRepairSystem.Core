@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using SchoolRepairSystemModels;
+using SchoolRepairSystem.Models;
 
 namespace SchoolRepairSystem.IRepository
 {

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SchoolRepairSystem.IService;
-using SchoolRepairSystemModels.ViewModels;
+using SchoolRepairSystem.Models.ViewModels;
 
 namespace SchoolRepairSystem.Api.Controllers
 {

@@ -4,8 +4,8 @@ using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SchoolRepairSystem.IService;
-using SchoolRepairSystemModels;
-using SchoolRepairSystemModels.ViewModels;
+using SchoolRepairSystem.Models;
+using SchoolRepairSystem.Models.ViewModels;
 
 namespace SchoolRepairSystem.Api.Controllers
 {

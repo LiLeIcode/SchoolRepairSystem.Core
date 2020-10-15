@@ -30,8 +30,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "D:\\CSharperWeb\\SchoolRepairSystem\\SchoolRepairSystemModels\\SchoolRepairSystemModels.csproj": {
-                "projectPath": "D:\\CSharperWeb\\SchoolRepairSystem\\SchoolRepairSystemModels\\SchoolRepairSystemModels.csproj"
+              "D:\\CSharperWeb\\SchoolRepairSystem\\SchoolRepairSystem.Models\\SchoolRepairSystem.Models.csproj": {
+                "projectPath": "D:\\CSharperWeb\\SchoolRepairSystem\\SchoolRepairSystem.Models\\SchoolRepairSystem.Models.csproj"
               }
             }
           }
@@ -103,8 +103,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "D:\\CSharperWeb\\SchoolRepairSystem\\SchoolRepairSystemModels\\SchoolRepairSystemModels.csproj": {
-                "projectPath": "D:\\CSharperWeb\\SchoolRepairSystem\\SchoolRepairSystemModels\\SchoolRepairSystemModels.csproj"
+              "D:\\CSharperWeb\\SchoolRepairSystem\\SchoolRepairSystem.Models\\SchoolRepairSystem.Models.csproj": {
+                "projectPath": "D:\\CSharperWeb\\SchoolRepairSystem\\SchoolRepairSystem.Models\\SchoolRepairSystem.Models.csproj"
               }
             }
           }
@@ -117,6 +117,101 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[3.1.3, 3.1.3]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[3.1.0, 3.1.0]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[3.1.0, 3.1.0]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\CSharperWeb\\SchoolRepairSystem\\SchoolRepairSystem.Models\\SchoolRepairSystem.Models.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\CSharperWeb\\SchoolRepairSystem\\SchoolRepairSystem.Models\\SchoolRepairSystem.Models.csproj",
+        "projectName": "SchoolRepairSystem.Models",
+        "projectPath": "D:\\CSharperWeb\\SchoolRepairSystem\\SchoolRepairSystem.Models\\SchoolRepairSystem.Models.csproj",
+        "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
+        "outputPath": "D:\\CSharperWeb\\SchoolRepairSystem\\SchoolRepairSystem.Models\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.1.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.1.8, )"
+            },
+            "Microsoft.Extensions.Logging.Console": {
+              "target": "Package",
+              "version": "[3.1.8, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -181,6 +276,9 @@
               },
               "D:\\CSharperWeb\\SchoolRepairSystem\\SchoolRepairSystem.IService\\SchoolRepairSystem.IService.csproj": {
                 "projectPath": "D:\\CSharperWeb\\SchoolRepairSystem\\SchoolRepairSystem.IService\\SchoolRepairSystem.IService.csproj"
+              },
+              "D:\\CSharperWeb\\SchoolRepairSystem\\SchoolRepairSystem.Models\\SchoolRepairSystem.Models.csproj": {
+                "projectPath": "D:\\CSharperWeb\\SchoolRepairSystem\\SchoolRepairSystem.Models\\SchoolRepairSystem.Models.csproj"
               }
             }
           }
@@ -193,101 +291,6 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48"
-          ],
-          "assetTargetFallback": true,
-          "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[3.1.3, 3.1.3]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[3.1.0, 3.1.0]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[3.1.0, 3.1.0]"
-            }
-          ],
-          "frameworkReferences": {
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
-        }
-      }
-    },
-    "D:\\CSharperWeb\\SchoolRepairSystem\\SchoolRepairSystemModels\\SchoolRepairSystemModels.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "D:\\CSharperWeb\\SchoolRepairSystem\\SchoolRepairSystemModels\\SchoolRepairSystemModels.csproj",
-        "projectName": "SchoolRepairSystemModels",
-        "projectPath": "D:\\CSharperWeb\\SchoolRepairSystem\\SchoolRepairSystemModels\\SchoolRepairSystemModels.csproj",
-        "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-        "outputPath": "D:\\CSharperWeb\\SchoolRepairSystem\\SchoolRepairSystemModels\\obj\\",
-        "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
-        "configFilePaths": [
-          "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
-        ],
-        "originalTargetFrameworks": [
-          "netcoreapp3.1"
-        ],
-        "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
-        },
-        "frameworks": {
-          "netcoreapp3.1": {
-            "projectReferences": {}
-          }
-        },
-        "warningProperties": {
-          "warnAsError": [
-            "NU1605"
-          ]
-        }
-      },
-      "frameworks": {
-        "netcoreapp3.1": {
-          "dependencies": {
-            "Microsoft.EntityFrameworkCore": {
-              "target": "Package",
-              "version": "[3.1.8, )"
-            },
-            "Microsoft.EntityFrameworkCore.Design": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[3.1.8, )"
-            },
-            "Microsoft.EntityFrameworkCore.SqlServer": {
-              "target": "Package",
-              "version": "[3.1.8, )"
-            },
-            "Microsoft.EntityFrameworkCore.Tools": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[3.1.8, )"
-            },
-            "Microsoft.Extensions.Logging.Console": {
-              "target": "Package",
-              "version": "[3.1.8, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",

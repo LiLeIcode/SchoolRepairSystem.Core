@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using SchoolRepairSystem.IRepository.UnitWork;
-using SchoolRepairSystemModels;
+using SchoolRepairSystem.Models;
 
 namespace SchoolRepairSystem.Repository.UnitWork
 {
