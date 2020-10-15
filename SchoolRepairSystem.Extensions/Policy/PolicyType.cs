@@ -61,6 +61,21 @@ namespace SchoolRepairSystem.Extensions.Policy
                 timeSpan: TimeSpan.FromSeconds(60 * 60));
             return permissionRequirement;
         }
+        /// <summary>
+        /// 电工木工
+        /// </summary>
+        /// <returns></returns>
+        public static PermissionRequirement ElectricianAndCarpentryPolicy()
+        {
+            PermissionRequirement permissionRequirement = new PermissionRequirement(
+                roleName: "电工,木工",
+                claimType: ClaimTypes.Role,
+                audience: audience,
+                issuer: issuer,
+                signingCredentials: signingCredentials,
+                timeSpan: TimeSpan.FromSeconds(60 * 60));
+            return permissionRequirement;
+        }
 
         /// <summary>
         /// 普通用户
@@ -78,7 +93,37 @@ namespace SchoolRepairSystem.Extensions.Policy
             return permissionRequirement;
         }
 
+        /// <summary>
+        /// 测试，管理员和普通用户
+        /// </summary>
+        /// <returns></returns>
+        public static PermissionRequirement AdminAndOrdinaryPolicy()
+        {
+            PermissionRequirement permissionRequirement = new PermissionRequirement(
+                roleName: "普通用户,管理员",
+                claimType: ClaimTypes.Role,
+                audience: audience,
+                issuer: issuer,
+                signingCredentials: signingCredentials,
+                timeSpan: TimeSpan.FromSeconds(60 * 60));
+            return permissionRequirement;
+        }
 
 
+        /// <summary>
+        /// 管理员，两个职工
+        /// </summary>
+        /// <returns></returns>
+        public static PermissionRequirement AdminAndOrdinaryAndElectricianPolicy()
+        {
+            PermissionRequirement permissionRequirement = new PermissionRequirement(
+                roleName: "电工,木工,管理员",
+                claimType: ClaimTypes.Role,
+                audience: audience,
+                issuer: issuer,
+                signingCredentials: signingCredentials,
+                timeSpan: TimeSpan.FromSeconds(60 * 60));
+            return permissionRequirement;
+        }
     }
 }

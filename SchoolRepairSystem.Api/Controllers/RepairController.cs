@@ -143,7 +143,7 @@ namespace SchoolRepairSystem.Api.Controllers
         public ResponseMessage<List<RepairViewModel>> GetAllRepair()
         {
             List<ReportForRepair> reportForRepairs = _reportForRepairService.QueryAll()?.Result;
-            if (reportForRepairs!=null)
+            if (reportForRepairs.Count!=0)
             {
                 return new ResponseMessage<List<RepairViewModel>>()
                 {

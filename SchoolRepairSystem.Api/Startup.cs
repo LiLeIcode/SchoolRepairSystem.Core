@@ -124,10 +124,13 @@ namespace SchoolRepairSystem.Api
                 options.AddPolicy("Carpentry", policy => policy.Requirements.Add(PolicyType.CarpentryPolicy()));
                 options.AddPolicy("Electrician", policy => policy.Requirements.Add(PolicyType.ElectricianPolicy()));
                 options.AddPolicy("Ordinary", policy => policy.Requirements.Add(PolicyType.OrdinaryPolicy()));
+                options.AddPolicy("AdminAndOrdinary", policy => policy.Requirements.Add(PolicyType.AdminAndOrdinaryPolicy()));
+                options.AddPolicy("ElectricianAndCarpentry", policy => policy.Requirements.Add(PolicyType.ElectricianAndCarpentryPolicy()));
+                options.AddPolicy("AdminAndOrdinaryAndElectrician", policy => policy.Requirements.Add(PolicyType.AdminAndOrdinaryAndElectricianPolicy()));
 
 
 
-                options.AddPolicy("test", policy=>policy.AddRequirements(new []{  PolicyType.AdminPolicy(), PolicyType.OrdinaryPolicy() }));
+                //options.AddPolicy("test", policy=>policy.AddRequirements(new []{  PolicyType.AdminPolicy(), PolicyType.OrdinaryPolicy() }));
             });
 
 

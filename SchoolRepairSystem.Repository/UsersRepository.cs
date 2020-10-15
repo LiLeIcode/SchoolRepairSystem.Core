@@ -30,6 +30,7 @@ namespace SchoolRepairSystem.Repository
                         Phone = phone,
                         Mail = mail
                     });
+                    //注册时，role应该默认为4，普通用户
                     return id;
                 }
 

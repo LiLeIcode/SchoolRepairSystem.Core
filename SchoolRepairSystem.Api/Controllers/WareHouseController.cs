@@ -95,7 +95,7 @@ namespace SchoolRepairSystem.Api.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("takeOutGoods")]
-        [Authorize(Policy = "Carpentry")]//Carpentry Electrician
+        [Authorize(Policy = "ElectricianAndCarpentry")]//Carpentry Electrician
         public async Task<ResponseMessage<long>> UpdateTakeOutGoods(long goodsId,int number)
         {
             WareHouse wareHouse = _wareHouseService.QueryById(goodsId)?.Result;
@@ -144,7 +144,7 @@ namespace SchoolRepairSystem.Api.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("allGoods")]
-        [Authorize(Policy = "Admin")]//Carpentry Electrician Admin
+        [Authorize(Policy = "AdminAndOrdinaryAndElectrician")]//Carpentry Electrician Admin
         public ResponseMessage<List<GoodsInfoViewModel>> GetAllGoods()
         {
             List<WareHouse> wareHouses = _wareHouseService.QueryAll()?.Result;

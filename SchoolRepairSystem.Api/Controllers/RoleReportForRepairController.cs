@@ -37,18 +37,13 @@ namespace SchoolRepairSystem.Api.Controllers
         /// <returns></returns>
         [Route("acceptRepairApplication")]
         [HttpGet]
-        [Authorize(Policy = "Carpentry")]//Carpentry Electrician
+        [Authorize(Policy = "ElectricianAndCarpentry")]//Carpentry Electrician
         public async Task<ResponseMessage<RoleReportForRepairViewModel>> UpdateRoleReportForRepair(long roleReportForRepairId)
         {
             ClaimsPrincipal principal = HttpContext.User;
             string roleName = principal.FindFirst(x => x.Type == ClaimTypes.Role).Value;
             string name = principal.FindFirst(x => x.Type == ClaimTypes.Name).Value;
             Roles roles = await _rolesService.Query(x => x.RoleName.Equals(roleName));
-            await _roleReportForRepairService.Add(new RoleReportForRepair()
-            {
-                RoleId = roles.Id,
-                RepairId = roleReportForRepairId
-            });
             ReportForRepair reportForRepair = await _reportForRepairService.QueryById(roleReportForRepairId);
             if (reportForRepair.WaitHandle==1||reportForRepair.WaitHandle==2)
             {
@@ -57,36 +52,45 @@ namespace SchoolRepairSystem.Api.Controllers
                     Msg = "接单失败，该报修已被接受或已完成维修",
                 };
             }
-            reportForRepair.WaitHandle = 1;//1标志表示接受处理
-            bool update = await _reportForRepairService.Update(reportForRepair);
-            return update
-                ? new ResponseMessage<RoleReportForRepairViewModel>()
+            else
+            {
+                await _roleReportForRepairService.Add(new RoleReportForRepair()
                 {
-                    Msg = "接单成功",
-                    Success = true,
-                    Status = 200,
-                    ResponseInfo = new RoleReportForRepairViewModel()
+                    RoleId = roles.Id,
+                    RepairId = roleReportForRepairId
+                });
+                reportForRepair.WaitHandle = 1;//1标志表示接受处理
+                bool update = await _reportForRepairService.Update(reportForRepair);
+                return update
+                    ? new ResponseMessage<RoleReportForRepairViewModel>()
                     {
-                        UserName = name,
-                        Dorm = reportForRepair.Dorm,
-                        Tung = reportForRepair.Tung,
-                        Desc = reportForRepair.Desc,
-                        Layer = reportForRepair.Layer
+                        Msg = "接单成功",
+                        Success = true,
+                        Status = 200,
+                        ResponseInfo = new RoleReportForRepairViewModel()
+                        {
+                            UserName = name,
+                            Dorm = reportForRepair.Dorm,
+                            Tung = reportForRepair.Tung,
+                            Desc = reportForRepair.Desc,
+                            Layer = reportForRepair.Layer
+                        }
                     }
-                }
-                : new ResponseMessage<RoleReportForRepairViewModel>()
-                {
-                    Msg = "接单失败",
-                    Success = false
-                };
+                    : new ResponseMessage<RoleReportForRepairViewModel>()
+                    {
+                        Msg = "接单失败",
+                        Success = false
+                    };
+            }
+            
         }
         /// <summary>
-        /// 查看自己接了哪些单
+        /// 查看自己接了哪些单,测试无数据返回
         /// </summary>
         /// <returns></returns>
         [HttpGet]
         [Route("myTask")]
-        [Authorize(Policy = "Carpentry")]
+        [Authorize(Policy = "ElectricianAndCarpentry")]
         public async Task<ResponseMessage<List<ReportForRepairViewModel>>> GetMyTask()
         {
             string jti = HttpContext.User.FindFirst(x => x.Type == Microsoft.IdentityModel.JsonWebTokens.JwtRegisteredClaimNames.Jti)
@@ -123,7 +127,7 @@ namespace SchoolRepairSystem.Api.Controllers
         /// <returns></returns>
         [Route("completeTask")]
         [HttpGet]
-        [Authorize(Policy = "Carpentry")]
+        [Authorize(Policy = "ElectricianAndCarpentry")]
         public async Task<ResponseMessage<string>> UpdateMyTask(long repairId)
         {
             ReportForRepair reportForRepair = _reportForRepairService.QueryById(repairId)?.Result;

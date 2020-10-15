@@ -18,7 +18,7 @@ namespace SchoolRepairSystem.Api.Controllers
      */
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Policy = "AdminAndCarpentryAndElectrician")]
+    [Authorize]
     public class MenuController : ControllerBase
     {
         private readonly IMenuService _menuService;

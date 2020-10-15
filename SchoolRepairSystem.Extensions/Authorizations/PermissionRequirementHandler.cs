@@ -15,17 +15,17 @@ namespace SchoolRepairSystem.Extensions.Authorizations
             {
                 string value = claim.Value;
                 //"admin,Ordinary",拆分处理
-                //string[] role = value.Split(",");
-                //foreach (string s in role)
-                //{
-                //    if (s == requirement.RoleName)
-                //    {
-                //        context.Succeed(requirement);
-                //        break;
-                //    }
-                //}
-                if (value == requirement.RoleName)
-                    context.Succeed(requirement);
+                string[] role = requirement.RoleName.Split(",");
+                foreach (string s in role)
+                {
+                    if (value == s)
+                    {
+                        context.Succeed(requirement);
+                        break;
+                    }
+                }
+                //if (value == requirement.RoleName)
+                //    context.Succeed(requirement);
             }
 
             return Task.CompletedTask;
