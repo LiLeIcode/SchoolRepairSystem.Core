@@ -1,4 +1,6 @@
-﻿namespace SchoolRepairSystem.Models.ViewModels
+﻿using System;
+
+namespace SchoolRepairSystem.Models.ViewModels
 {
     public class ReportForRepairViewModel
     {
@@ -32,5 +34,7 @@
         /// 评价，0 or null没有评论，1好评，2中评，3差评
         /// </summary>
         public int Evaluate { get; set; }
+
+        public DateTime DateTime { get; set; }
     }
 }

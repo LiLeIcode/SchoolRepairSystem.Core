@@ -140,20 +140,20 @@ namespace SchoolRepairSystem.Api.Controllers
         [HttpGet]
         [Route("allRepair")]
         [Authorize(Policy = "Admin")]
-        public ResponseMessage<List<RepairViewModel>> GetAllRepair()
+        public ResponseMessage<List<ReportForRepairViewModel>> GetAllRepair()
         {
             List<ReportForRepair> reportForRepairs = _reportForRepairService.QueryAll()?.Result;
-            if (reportForRepairs.Count!=0)
+            if (reportForRepairs!=null)
             {
-                return new ResponseMessage<List<RepairViewModel>>()
+                return new ResponseMessage<List<ReportForRepairViewModel>>()
                 {
                     Msg = "请求成功",
                     Status = 200,
                     Success = false,
-                    ResponseInfo = _mapper.Map<List<RepairViewModel>>(reportForRepairs)
+                    ResponseInfo = _mapper.Map<List<ReportForRepairViewModel>>(reportForRepairs)
                 };
             }
-            return new ResponseMessage<List<RepairViewModel>>()
+            return new ResponseMessage<List<ReportForRepairViewModel>>()
             {
                 Msg = "请求成功,暂无无数据",
                 Status = 200,

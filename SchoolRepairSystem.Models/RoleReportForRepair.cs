@@ -14,6 +14,10 @@ namespace SchoolRepairSystem.Models
         /// </summary>
         [Required]
         public long RoleId { get; set; }
+        /// <summary>
+        /// 工人的id
+        /// </summary>
+        public long WorkerId { get; set; }
 
     }
 }

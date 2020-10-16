@@ -115,6 +115,9 @@ namespace SchoolRepairSystem.Models.Migrations
                     b.Property<long>("RoleId")
                         .HasColumnType("bigint");
 
+                    b.Property<long>("WorkerId")
+                        .HasColumnType("bigint");
+
                     b.HasKey("Id");
 
                     b.ToTable("RoleReportForRepairs");

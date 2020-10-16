@@ -44,7 +44,8 @@ namespace SchoolRepairSystem.Models
         /// <summary>
         /// 评价，0 or null没有评论，1好评，2中评，3差评
         /// </summary>
-        public int Evaluate { get; set; } 
+        public int Evaluate { get; set; }
+
 
     }
 }

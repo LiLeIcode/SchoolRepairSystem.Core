@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 using SchoolRepairSystem.IService;
 using SchoolRepairSystem.Models;
 using SchoolRepairSystem.Models.ViewModels;
+using JwtRegisteredClaimNames = Microsoft.IdentityModel.JsonWebTokens.JwtRegisteredClaimNames;
 
 namespace SchoolRepairSystem.Api.Controllers
 {
@@ -43,6 +44,7 @@ namespace SchoolRepairSystem.Api.Controllers
             ClaimsPrincipal principal = HttpContext.User;
             string roleName = principal.FindFirst(x => x.Type == ClaimTypes.Role).Value;
             string name = principal.FindFirst(x => x.Type == ClaimTypes.Name).Value;
+            string jti = principal.FindFirst(x => x.Type == JwtRegisteredClaimNames.Jti).Value;
             Roles roles = await _rolesService.Query(x => x.RoleName.Equals(roleName));
             ReportForRepair reportForRepair = await _reportForRepairService.QueryById(roleReportForRepairId);
             if (reportForRepair.WaitHandle==1||reportForRepair.WaitHandle==2)
@@ -56,6 +58,7 @@ namespace SchoolRepairSystem.Api.Controllers
             {
                 await _roleReportForRepairService.Add(new RoleReportForRepair()
                 {
+                    WorkerId = Convert.ToInt64(jti),
                     RoleId = roles.Id,
                     RepairId = roleReportForRepairId
                 });
@@ -85,7 +88,7 @@ namespace SchoolRepairSystem.Api.Controllers
             
         }
         /// <summary>
-        /// 查看自己接了哪些单,测试无数据返回
+        /// 查看自己接了哪些单
         /// </summary>
         /// <returns></returns>
         [HttpGet]
@@ -95,7 +98,7 @@ namespace SchoolRepairSystem.Api.Controllers
         {
             string jti = HttpContext.User.FindFirst(x => x.Type == Microsoft.IdentityModel.JsonWebTokens.JwtRegisteredClaimNames.Jti)
                 .Value;
-            List<RoleReportForRepair> roleReportForRepairs = _roleReportForRepairService.QueryList(x=>x.RoleId==Convert.ToInt64(jti)&&!x.IsRemove)?.Result;
+            List<RoleReportForRepair> roleReportForRepairs = _roleReportForRepairService.QueryList(x=>x.WorkerId==Convert.ToInt64(jti)&&!x.IsRemove)?.Result;
             List<long> idLongs = new List<long>();
             if (roleReportForRepairs!=null)
             {

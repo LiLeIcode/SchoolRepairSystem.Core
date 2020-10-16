@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace SchoolRepairSystem.Models.ViewModels
 {
@@ -24,5 +25,7 @@ namespace SchoolRepairSystem.Models.ViewModels
         /// </summary>
         [Required]
         public string Desc { get; set; }
+
+
     }
 }
