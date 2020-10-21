@@ -4,6 +4,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SchoolRepairSystem.IService;
@@ -14,6 +15,7 @@ namespace SchoolRepairSystem.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("cors")]
     public class WareHouseController : ControllerBase
     {
         private readonly IWareHouseService _wareHouseService;

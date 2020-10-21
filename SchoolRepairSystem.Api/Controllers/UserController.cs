@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using SchoolRepairSystem.IService;
 using SchoolRepairSystem.Models;
@@ -11,6 +12,7 @@ namespace SchoolRepairSystem.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("cors")]
 
     public class UserController : ControllerBase
     {

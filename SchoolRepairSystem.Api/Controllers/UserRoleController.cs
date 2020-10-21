@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using SchoolRepairSystem.IService;
 using SchoolRepairSystem.Models;
@@ -9,6 +10,7 @@ namespace SchoolRepairSystem.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("cors")]
     public class UserRoleController : ControllerBase
     {
         private readonly IUsersService _usersService;

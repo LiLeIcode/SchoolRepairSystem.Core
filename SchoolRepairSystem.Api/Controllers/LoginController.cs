@@ -4,6 +4,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using SchoolRepairSystem.Common.Helper;
@@ -15,6 +16,7 @@ namespace SchoolRepairSystem.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("cors")]
     public class LoginController : ControllerBase
     {
         private readonly IUsersService _usersService;
