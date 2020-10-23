@@ -26,7 +26,7 @@ namespace SchoolRepairSystem.Api.Controllers
         private readonly IRolesService _rolesService;
         private readonly IMapper _mapper;
 
-        public RoleReportForRepairController(IReportForRepairService reportForRepairService,IRoleReportForRepairService roleReportForRepairService,IRolesService rolesService,IMapper mapper)
+        public RoleReportForRepairController(IReportForRepairService reportForRepairService, IRoleReportForRepairService roleReportForRepairService, IRolesService rolesService, IMapper mapper)
         {
             _reportForRepairService = reportForRepairService;
             _roleReportForRepairService = roleReportForRepairService;
@@ -49,14 +49,7 @@ namespace SchoolRepairSystem.Api.Controllers
             string jti = principal.FindFirst(x => x.Type == JwtRegisteredClaimNames.Jti).Value;
             Roles roles = await _rolesService.Query(x => x.RoleName.Equals(roleName));
             ReportForRepair reportForRepair = await _reportForRepairService.QueryById(roleReportForRepairId);
-            if (reportForRepair.WaitHandle==1||reportForRepair.WaitHandle==2)
-            {
-                return new ResponseMessage<RoleReportForRepairViewModel>()
-                {
-                    Msg = "接单失败，该报修已被接受或已完成维修",
-                };
-            }
-            else
+            if (reportForRepair.WaitHandle == 0)
             {
                 await _roleReportForRepairService.Add(new RoleReportForRepair()
                 {
@@ -86,23 +79,34 @@ namespace SchoolRepairSystem.Api.Controllers
                         Msg = "接单失败",
                         Success = false
                     };
+
+
             }
-            
+            else
+            {
+                return new ResponseMessage<RoleReportForRepairViewModel>()
+                {
+                    Msg = "接单失败，该报修已被接受或已完成维修",
+                };
+            }
+
         }
         /// <summary>
         /// 查看自己接了哪些单
         /// </summary>
+        /// <param name="pageNum">第几页</param>
+        /// <param name="size">看几个</param>
         /// <returns></returns>
         [HttpGet]
         [Route("myTask")]
         [Authorize(Policy = "ElectricianAndCarpentry")]
-        public async Task<ResponseMessage<List<ReportForRepairViewModel>>> GetMyTask()
+        public async Task<ResponseMessage<List<ReportForRepairViewModel>>> GetMyTask(int pageNum, int size)
         {
             string jti = HttpContext.User.FindFirst(x => x.Type == Microsoft.IdentityModel.JsonWebTokens.JwtRegisteredClaimNames.Jti)
                 .Value;
-            List<RoleReportForRepair> roleReportForRepairs = _roleReportForRepairService.QueryList(x=>x.WorkerId==Convert.ToInt64(jti)&&!x.IsRemove)?.Result;
+            List<RoleReportForRepair> roleReportForRepairs = _roleReportForRepairService.QueryPagingByExp(x => x.WorkerId == Convert.ToInt64(jti) && !x.IsRemove, pageNum, size)?.Result;
             List<long> idLongs = new List<long>();
-            if (roleReportForRepairs!=null)
+            if (roleReportForRepairs != null)
             {
                 foreach (RoleReportForRepair roleReportForRepair in roleReportForRepairs)
                 {
@@ -123,7 +127,7 @@ namespace SchoolRepairSystem.Api.Controllers
                 Msg = "你没有任何任务",
                 Success = true
             };
-            
+
         }
         /// <summary>
         /// 完成任务
@@ -136,19 +140,19 @@ namespace SchoolRepairSystem.Api.Controllers
         public async Task<ResponseMessage<string>> UpdateMyTask(long repairId)
         {
             ReportForRepair reportForRepair = _reportForRepairService.QueryById(repairId)?.Result;
-            if (reportForRepair != null) 
+            if (reportForRepair != null)
             {
-                if (reportForRepair.WaitHandle==0)
+                if (reportForRepair.WaitHandle == 0)
                 {
                     return new ResponseMessage<string>()
                     {
                         Msg = "该任务还未被人接受处理",
                         Success = false
                     };
-                    
+
                 }
 
-                if (reportForRepair.WaitHandle==2)
+                if (reportForRepair.WaitHandle == 2)
                 {
                     return new ResponseMessage<string>()
                     {
@@ -164,7 +168,7 @@ namespace SchoolRepairSystem.Api.Controllers
                     {
                         Msg = "成功提交，已完成",
                         Success = true,
-                        Status=200
+                        Status = 200
                     }
                     : new ResponseMessage<string>()
                     {

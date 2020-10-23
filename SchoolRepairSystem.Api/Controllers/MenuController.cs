@@ -18,8 +18,8 @@ namespace SchoolRepairSystem.Api.Controllers
      * 根据授权策略分权访问
      */
     [Route("api/[controller]")]
-    [ApiController]
     [Authorize]
+    [ApiController]
     [EnableCors("cors")]
     public class MenuController : ControllerBase
     {
@@ -53,6 +53,7 @@ namespace SchoolRepairSystem.Api.Controllers
                     {
                         data.Add(new MenuViewModel()
                         {
+                            Id = menu.Id,
                             MenuName = menu.MenuName,
                             Grade = 1,
                             Path = menu.Path
@@ -70,6 +71,7 @@ namespace SchoolRepairSystem.Api.Controllers
                     {
                         data.Add(new MenuViewModel()
                         {
+                            Id = menu.Id,
                             MenuName = menu.MenuName,
                             Grade = 2,
                             Path = menu.Path
@@ -87,6 +89,7 @@ namespace SchoolRepairSystem.Api.Controllers
                     {
                         data.Add(new MenuViewModel()
                         {
+                            Id = menu.Id,
                             MenuName = menu.MenuName,
                             Grade = 3,
                             Path = menu.Path

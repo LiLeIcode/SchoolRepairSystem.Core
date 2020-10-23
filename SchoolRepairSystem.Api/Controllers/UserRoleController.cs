@@ -26,18 +26,25 @@ namespace SchoolRepairSystem.Api.Controllers
         /// <summary>
         /// 赋角色，改角色
         /// </summary>
-        /// <param name="userId"></param>
-        /// <param name="roleId"></param>
+        /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost]
         [Route("empowerment")]
         [Authorize(Policy = "Admin")]
-        public async Task<ResponseMessage<long>> UpdateUserRole([FromQuery]long userId, [FromQuery] long roleId)
+        public async Task<ResponseMessage<long>> UpdateUserRole([FromBody]UserRoleViewModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return new ResponseMessage<long>()
+                {
+                    Msg = "请求失败,参数错误",
+                    Success = false,
+                };
+            }
             long id = await _userRoleService.Add(new UserRole()
             {
-                UserId = userId,
-                RoleId = roleId
+                UserId = model.UserId,
+                RoleId = model.RoleId
             });
             return new ResponseMessage<long>()
             {
@@ -53,7 +60,7 @@ namespace SchoolRepairSystem.Api.Controllers
         /// <param name="userId"></param>
         /// <returns></returns>
         [Route("SeizingPower")]
-        [HttpGet]
+        [HttpPost]
         [Authorize(Policy = "Admin")]
         public async Task<ResponseMessage<bool>> DeleteUserRole(long userId)
         {

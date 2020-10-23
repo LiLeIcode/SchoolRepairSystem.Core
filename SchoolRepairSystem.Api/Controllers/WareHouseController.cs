@@ -143,13 +143,15 @@ namespace SchoolRepairSystem.Api.Controllers
         /// <summary>
         /// 获取仓库
         /// </summary>
+        /// <param name="pageNum"></param>
+        /// <param name="size"></param>
         /// <returns></returns>
         [HttpGet]
         [Route("allGoods")]
         [Authorize(Policy = "AdminAndOrdinaryAndElectrician")]//Carpentry Electrician Admin
-        public ResponseMessage<List<GoodsInfoViewModel>> GetAllGoods()
+        public ResponseMessage<List<GoodsInfoViewModel>> GetAllGoods(int pageNum,int size)
         {
-            List<WareHouse> wareHouses = _wareHouseService.QueryAll()?.Result;
+            List<WareHouse> wareHouses = _wareHouseService.QueryPagingByExp(x=>!x.IsRemove,pageNum,size)?.Result;
             if (wareHouses!=null)
             {
                 return new ResponseMessage<List<GoodsInfoViewModel>>()
@@ -170,13 +172,15 @@ namespace SchoolRepairSystem.Api.Controllers
         /// <summary>
         /// 所有货物的存取信息
         /// </summary>
+        /// <param name="pageNum"></param>
+        /// <param name="size"></param>
         /// <returns></returns>
         [HttpGet]
         [Route("AllAccessInfo")]
         [Authorize(Policy = "Admin")]
-        public async Task<ResponseMessage<List<UserWareHouseViewModel>>> GetAllAccessInfo()
+        public async Task<ResponseMessage<List<UserWareHouseViewModel>>> GetAllAccessInfo(int pageNum, int size)
         {
-            List<UserWareHouse> userWareHouses = _userWareHouseService.QueryAll()?.Result;
+            List<UserWareHouse> userWareHouses = _userWareHouseService.QueryPagingByExp(x => !x.IsRemove, pageNum, size)?.Result;
             List<long> idLongs = new List<long>();
             if (userWareHouses!=null)
             {

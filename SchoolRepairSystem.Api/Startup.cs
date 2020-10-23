@@ -150,12 +150,12 @@ namespace SchoolRepairSystem.Api
                     {
                         Name = "LiLeiCode",
                         Email = "2424117373@qq.com",
-                        Url = new Uri("http://www.baidu.com")
+                        Url = new Uri("https://github.com/LiLeIcode/SchoolRepairSystem.Core.git")
                     },
                     License = new OpenApiLicense()
                     {
                         Name = "LiLei–Ìø…÷§",
-                        Url = new Uri("http://www.baidu.com")
+                        Url = new Uri("https://github.com/LiLeIcode/SchoolRepairSystem.Core.git")
                     }
                 });
                 var basePath = Path.GetDirectoryName(typeof(Program).Assembly.Location);

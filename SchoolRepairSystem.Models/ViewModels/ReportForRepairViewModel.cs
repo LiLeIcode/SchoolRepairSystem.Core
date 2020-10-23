@@ -4,6 +4,7 @@ namespace SchoolRepairSystem.Models.ViewModels
 {
     public class ReportForRepairViewModel
     {
+        public long Id { get; set; }
         /// <summary>
         /// 报修者名字
         /// </summary>

@@ -77,8 +77,9 @@ namespace SchoolRepairSystem.Service
             return await _BaseDal.QueryPaging(pageNum, pageSize);
         }
 
-
-        
-
+        public async Task<List<T>> QueryPagingByExp(Expression<Func<T, bool>> whereExpression, int pageNum, int pageSize)
+        {
+            return await _BaseDal.QueryPagingByExp(whereExpression, pageNum, pageSize);
+        }
     }
 }

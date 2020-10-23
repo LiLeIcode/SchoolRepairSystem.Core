@@ -112,7 +112,15 @@ namespace SchoolRepairSystem.Repository
 
         public async Task<List<T>> QueryPaging(int pageNum, int pageSize)
         {
-            return await _dbContext.Set<T>().Where(x => !x.IsRemove).Skip(pageNum * (pageSize - 1)).Take(pageSize).ToListAsync();
+            //return await _dbContext.Set<T>().Skip(pageSize * (pageNum - 1)).Take(pageSize).Where(x => !x.IsRemove).ToListAsync();
+
+            return await _dbContext.Set<T>().Where(x => !x.IsRemove).Skip(pageSize * (pageNum - 1)).Take(pageSize).Where(x => !x.IsRemove).ToListAsync();
+        }
+        public async Task<List<T>> QueryPagingByExp(Expression<Func<T,bool>> whereExpression,int pageNum, int pageSize)
+        {
+            //return await _dbContext.Set<T>().Skip(pageSize * (pageNum - 1)).Take(pageSize).Where(x => !x.IsRemove).ToListAsync();
+
+            return await _dbContext.Set<T>().Where(whereExpression).Skip(pageSize * (pageNum - 1)).Take(pageSize).Where(x => !x.IsRemove).ToListAsync();
         }
         /// <summary>
         /// 有问题
@@ -143,7 +151,7 @@ namespace SchoolRepairSystem.Repository
         //    where model2 : class
         //    where resultList : class
         //    where model3 : class
-            
+
         //    ,new()
         //{
         //    return await _dbContext.Set<model1>()

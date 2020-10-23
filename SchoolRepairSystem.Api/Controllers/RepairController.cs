@@ -69,10 +69,10 @@ namespace SchoolRepairSystem.Api.Controllers
         [HttpGet]
         [Route("allRepairRecord")]
         [Authorize(Policy = "Ordinary")]
-        public ResponseMessage<List<ReportForRepairRecordViewModel>> GetUserAllRecord()
+        public ResponseMessage<List<ReportForRepairRecordViewModel>> GetUserAllRecord(int pageNum,int size)
         {
             string jti = HttpContext.User.FindFirst(x => x.Type == JwtRegisteredClaimNames.Jti).Value;
-            List<ReportForRepair> reportForRepairs = _reportForRepairService.QueryList(x => x.UserId == Convert.ToInt64(jti))?.Result;
+            List<ReportForRepair> reportForRepairs = _reportForRepairService.QueryPagingByExp(x => x.UserId == Convert.ToInt64(jti)&&!x.IsRemove, pageNum, size)?.Result;
             if (reportForRepairs!=null)
             {
                 return new ResponseMessage<List<ReportForRepairRecordViewModel>>()
@@ -91,23 +91,22 @@ namespace SchoolRepairSystem.Api.Controllers
         /// <summary>
         /// 填写已完成报修的评论
         /// </summary>
-        /// <param name="reportForRepairId"></param>
-        /// <param name="evaluate">0无,1好,2中,3差</param>
+        /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost]
         [Route("comment")]
         [Authorize(Policy = "Ordinary")]
         //[Authorize(Policy = "Admin")]
-        public async Task<ResponseMessage<bool>> PostComment([FromQuery]long reportForRepairId, [FromQuery]int evaluate=0)
+        public async Task<ResponseMessage<bool>> PostComment([FromBody]CommentViewModel model)
         {
             //string jti = HttpContext.User.FindFirst(x => x.Type == JwtRegisteredClaimNames.Jti).Value;
             //long id = Convert.ToInt64(jti);
-            ReportForRepair reportForRepair = _reportForRepairService.QueryById(reportForRepairId)?.Result;
+            ReportForRepair reportForRepair = _reportForRepairService.QueryById(model.ReportForRepairId)?.Result;
             if (reportForRepair!=null)
             {
                 if (reportForRepair.WaitHandle == 2 && reportForRepair.Evaluate == 0)
                 {
-                    reportForRepair.Evaluate = evaluate;
+                    reportForRepair.Evaluate = model.Evaluate;
                     bool update = await _reportForRepairService.Update(reportForRepair);
                     if (update)
                     {
@@ -141,10 +140,10 @@ namespace SchoolRepairSystem.Api.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("allRepair")]
-        [Authorize(Policy = "Admin")]
-        public ResponseMessage<List<ReportForRepairViewModel>> GetAllRepair()
+        [Authorize(Policy = "AdminAndOrdinaryAndElectrician")]
+        public ResponseMessage<List<ReportForRepairViewModel>> GetAllRepair(int pageNum, int size)
         {
-            List<ReportForRepair> reportForRepairs = _reportForRepairService.QueryAll()?.Result;
+            List<ReportForRepair> reportForRepairs = _reportForRepairService.QueryPagingByExp(x=>!x.IsRemove,pageNum,size)?.Result;
             if (reportForRepairs!=null)
             {
                 return new ResponseMessage<List<ReportForRepairViewModel>>()

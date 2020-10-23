@@ -27,13 +27,15 @@ namespace SchoolRepairSystem.Api.Controllers
         /// <summary>
         /// 获取所有用户账号信息
         /// </summary>
+        /// <param name="pageNum"></param>
+        /// <param name="size"></param>
         /// <returns></returns>
         [HttpGet]
         [Route("userList")]
         [Authorize(Policy = "Admin")]
-        public async Task<ResponseMessage<List<UserViewModel>>> GetUserList()
+        public ResponseMessage<List<UserViewModel>> GetUserList(int pageNum,int size)
         {
-            List<Users> userList = await _usersService.QueryAll();
+            List<Users> userList = _usersService.QueryPagingByExp(x=>!x.IsRemove,pageNum,size)?.Result;
             return new ResponseMessage<List<UserViewModel>>()
             {
                 Msg = "请求成功",

@@ -36,15 +36,28 @@ namespace SchoolRepairSystem.Test
             //Users query = await usersService.Query(x => x.UserName.Equals("lilei"));
             //Console.WriteLine(query.UserName);
 
+            #region 分页
+
+            ReportForRepairService service = new ReportForRepairService(new ReportForRepairRepository());
+            var queryPaging = await service.QueryPaging(4, 5);
+            foreach (var repair in queryPaging)
+            {
+                Console.WriteLine(repair.Id);
+            }
+            #endregion
+
+
+
+
             #region 分离字符串
 
-            string roleName = "admin,Carpentry,Electrician,Ordinary";
-            string[] split = roleName.Split(',');
-            foreach (string s in split)
-            {
-                Console.WriteLine(s);
+            //string roleName = "admin,Carpentry,Electrician,Ordinary";
+            //string[] split = roleName.Split(',');
+            //foreach (string s in split)
+            //{
+            //    Console.WriteLine(s);
 
-            }
+            //}
 
             #endregion
 

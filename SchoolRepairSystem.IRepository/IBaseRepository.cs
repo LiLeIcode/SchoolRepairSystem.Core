@@ -23,6 +23,7 @@ namespace SchoolRepairSystem.IRepository
 
         Task<List<T>> QueryPaging(int pageNum,int pageSize);
 
+        Task<List<T>> QueryPagingByExp(Expression<Func<T, bool>> whereExpression, int pageNum, int pageSize);
 
     }
 }

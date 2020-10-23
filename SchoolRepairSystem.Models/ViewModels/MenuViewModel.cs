@@ -2,6 +2,7 @@
 {
     public class MenuViewModel
     {
+        public long Id { get; set; }
         public string MenuName { get; set; }
         /// <summary>
         /// 菜单等级

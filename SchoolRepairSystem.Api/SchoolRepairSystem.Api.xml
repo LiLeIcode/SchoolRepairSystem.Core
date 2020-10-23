@@ -35,21 +35,20 @@
             <param name="model"></param>
             <returns></returns>
         </member>
-        <member name="M:SchoolRepairSystem.Api.Controllers.RepairController.GetUserAllRecord">
+        <member name="M:SchoolRepairSystem.Api.Controllers.RepairController.GetUserAllRecord(System.Int32,System.Int32)">
             <summary>
             获取个人报修记录
             </summary>
             <returns></returns>
         </member>
-        <member name="M:SchoolRepairSystem.Api.Controllers.RepairController.PostComment(System.Int64,System.Int32)">
+        <member name="M:SchoolRepairSystem.Api.Controllers.RepairController.PostComment(SchoolRepairSystem.Models.ViewModels.CommentViewModel)">
             <summary>
             填写已完成报修的评论
             </summary>
-            <param name="reportForRepairId"></param>
-            <param name="evaluate">0无,1好,2中,3差</param>
+            <param name="model"></param>
             <returns></returns>
         </member>
-        <member name="M:SchoolRepairSystem.Api.Controllers.RepairController.GetAllRepair">
+        <member name="M:SchoolRepairSystem.Api.Controllers.RepairController.GetAllRepair(System.Int32,System.Int32)">
             <summary>
             获取所有的报修记录
             </summary>
@@ -62,10 +61,12 @@
             <param name="roleReportForRepairId"></param>
             <returns></returns>
         </member>
-        <member name="M:SchoolRepairSystem.Api.Controllers.RoleReportForRepairController.GetMyTask">
+        <member name="M:SchoolRepairSystem.Api.Controllers.RoleReportForRepairController.GetMyTask(System.Int32,System.Int32)">
             <summary>
             查看自己接了哪些单
             </summary>
+            <param name="pageNum">第几页</param>
+            <param name="size">看几个</param>
             <returns></returns>
         </member>
         <member name="M:SchoolRepairSystem.Api.Controllers.RoleReportForRepairController.UpdateMyTask(System.Int64)">
@@ -75,10 +76,12 @@
             <param name="repairId"></param>
             <returns></returns>
         </member>
-        <member name="M:SchoolRepairSystem.Api.Controllers.UserController.GetUserList">
+        <member name="M:SchoolRepairSystem.Api.Controllers.UserController.GetUserList(System.Int32,System.Int32)">
             <summary>
             获取所有用户账号信息
             </summary>
+            <param name="pageNum"></param>
+            <param name="size"></param>
             <returns></returns>
         </member>
         <member name="M:SchoolRepairSystem.Api.Controllers.UserController.UpdateUserInfo(SchoolRepairSystem.Models.ViewModels.UserViewModel)">
@@ -88,12 +91,11 @@
             <param name="model"></param>
             <returns></returns>
         </member>
-        <member name="M:SchoolRepairSystem.Api.Controllers.UserRoleController.UpdateUserRole(System.Int64,System.Int64)">
+        <member name="M:SchoolRepairSystem.Api.Controllers.UserRoleController.UpdateUserRole(SchoolRepairSystem.Models.ViewModels.UserRoleViewModel)">
             <summary>
             赋角色，改角色
             </summary>
-            <param name="userId"></param>
-            <param name="roleId"></param>
+            <param name="model"></param>
             <returns></returns>
         </member>
         <member name="M:SchoolRepairSystem.Api.Controllers.UserRoleController.DeleteUserRole(System.Int64)">
@@ -119,16 +121,20 @@
             <param name="number"></param>
             <returns></returns>
         </member>
-        <member name="M:SchoolRepairSystem.Api.Controllers.WareHouseController.GetAllGoods">
+        <member name="M:SchoolRepairSystem.Api.Controllers.WareHouseController.GetAllGoods(System.Int32,System.Int32)">
             <summary>
             获取仓库
             </summary>
+            <param name="pageNum"></param>
+            <param name="size"></param>
             <returns></returns>
         </member>
-        <member name="M:SchoolRepairSystem.Api.Controllers.WareHouseController.GetAllAccessInfo">
+        <member name="M:SchoolRepairSystem.Api.Controllers.WareHouseController.GetAllAccessInfo(System.Int32,System.Int32)">
             <summary>
             所有货物的存取信息
             </summary>
+            <param name="pageNum"></param>
+            <param name="size"></param>
             <returns></returns>
         </member>
     </members>
