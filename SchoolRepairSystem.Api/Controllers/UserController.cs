@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
@@ -18,11 +19,13 @@ namespace SchoolRepairSystem.Api.Controllers
     {
         private readonly IUsersService _usersService;
         private readonly IMapper _mapper;
+        private readonly IUserRoleService _userRoleService;
 
-        public UserController(IUsersService usersService, IMapper mapper)
+        public UserController(IUsersService usersService, IMapper mapper, IUserRoleService userRoleService)
         {
             _usersService = usersService;
             _mapper = mapper;
+            _userRoleService = userRoleService;
         }
         /// <summary>
         /// 获取所有用户账号信息
@@ -33,15 +36,39 @@ namespace SchoolRepairSystem.Api.Controllers
         [HttpGet]
         [Route("userList")]
         [Authorize(Policy = "Admin")]
-        public ResponseMessage<List<UserViewModel>> GetUserList(int pageNum,int size)
+        public async Task<ResponseMessage<List<UserAddRoleViewModel>>> GetUserList(int pageNum, int size)
         {
-            List<Users> userList = _usersService.QueryPagingByExp(x=>!x.IsRemove,pageNum,size)?.Result;
-            return new ResponseMessage<List<UserViewModel>>()
+            List<Users> userList = _usersService.QueryPagingByExp(x => !x.IsRemove, pageNum, size)?.Result;
+            List<UserRole> userRoles = await _userRoleService.QueryAll();
+            List<UserAddRoleViewModel> response = new List<UserAddRoleViewModel>();
+            if (userList != null)
             {
-                Msg = "请求成功",
-                Status = 200,
-                Success = true,
-                ResponseInfo = _mapper.Map<List<UserViewModel>>(userList)
+                foreach (Users users in userList)
+                {
+                    UserRole userRole = userRoles.First(x => x.UserId == users.Id);
+                    response.Add(new UserAddRoleViewModel()
+                    {
+                        Id = users.Id,
+                        UserName = users.UserName,
+                        Password = users.Password,
+                        Mail = users.Mail,
+                        Phone = users.Phone,
+                        RoleId = userRole.RoleId
+                    });
+                }
+                return new ResponseMessage<List<UserAddRoleViewModel>>()
+                {
+                    Msg = "请求成功",
+                    Status = 200,
+                    Success = true,
+                    ResponseInfo = response
+                };
+            }
+
+            return new ResponseMessage<List<UserAddRoleViewModel>>()
+            {
+                Msg = "请求失败",
+                Success = false,
             };
         }
         /// <summary>
@@ -56,17 +83,7 @@ namespace SchoolRepairSystem.Api.Controllers
         {
             if (ModelState.IsValid)
             {
-                Users verifyPresenceUser = _usersService.Query(x => x.UserName == model.UserName)?.Result;
-                if (verifyPresenceUser!=null)
-                {
-                    return new ResponseMessage<UserViewModel>()
-                    {
-                        Msg = "用户名存在！更改失败",
-                        Success = false
-                    };
-                }
                 Users user = await _usersService.QueryById(model.Id);
-                user.UserName = model.UserName;
                 user.Password = model.Password;
                 user.Phone = model.Phone;
                 user.Mail = model.Mail;
@@ -86,7 +103,7 @@ namespace SchoolRepairSystem.Api.Controllers
                     Msg = "修改失败",
                     Success = false
                 };
-                
+
             }
             return new ResponseMessage<UserViewModel>()
             {

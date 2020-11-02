@@ -80,12 +80,18 @@ namespace SchoolRepairSystem.Models.Migrations
                         .HasColumnType("nvarchar(10)")
                         .HasMaxLength(10);
 
+                    b.Property<long>("RoleId")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("Tung")
                         .IsRequired()
                         .HasColumnType("nvarchar(10)")
                         .HasMaxLength(10);
 
                     b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("WorkerId")
                         .HasColumnType("bigint");
 
                     b.Property<int>("WaitHandle")

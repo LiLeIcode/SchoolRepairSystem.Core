@@ -4,6 +4,24 @@
         <name>SchoolRepairSystem.Api</name>
     </assembly>
     <members>
+        <member name="M:SchoolRepairSystem.Api.Controllers.DataReportController.GetDataQC">
+            <summary>
+            完成量对比
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SchoolRepairSystem.Api.Controllers.DataReportController.GetUserProportion">
+            <summary>
+            用户比例
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SchoolRepairSystem.Api.Controllers.DataReportController.GetComment">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:SchoolRepairSystem.Api.Controllers.LoginController.PostToken(SchoolRepairSystem.Models.ViewModels.LoginUser)">
             <summary>
             登录
@@ -54,6 +72,14 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:SchoolRepairSystem.Api.Controllers.RepairController.GetWorkerRepair(System.Int32,System.Int32)">
+            <summary>
+            获取该用户接受的所有的任务
+            </summary>
+            <param name="pageNum"></param>
+            <param name="size"></param>
+            <returns></returns>
+        </member>
         <member name="M:SchoolRepairSystem.Api.Controllers.RoleReportForRepairController.UpdateRoleReportForRepair(System.Int64)">
             <summary>
             职工接受报修
@@ -72,6 +98,13 @@
         <member name="M:SchoolRepairSystem.Api.Controllers.RoleReportForRepairController.UpdateMyTask(System.Int64)">
             <summary>
             完成任务
+            </summary>
+            <param name="repairId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SchoolRepairSystem.Api.Controllers.RoleReportForRepairController.UpdateWaitHandle(System.Int64)">
+            <summary>
+             放弃任务
             </summary>
             <param name="repairId"></param>
             <returns></returns>

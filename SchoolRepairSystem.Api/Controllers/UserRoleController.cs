@@ -31,28 +31,40 @@ namespace SchoolRepairSystem.Api.Controllers
         [HttpPost]
         [Route("empowerment")]
         [Authorize(Policy = "Admin")]
-        public async Task<ResponseMessage<long>> UpdateUserRole([FromBody]UserRoleViewModel model)
+        public async Task<ResponseMessage<bool>> UpdateUserRole([FromBody]UserRoleViewModel model)
         {
+            //改，有bug,2个id为0，需要先检索userid再修改roleid
             if (!ModelState.IsValid)
             {
-                return new ResponseMessage<long>()
+                return new ResponseMessage<bool>()
                 {
                     Msg = "请求失败,参数错误",
                     Success = false,
                 };
             }
-            long id = await _userRoleService.Add(new UserRole()
+            else
             {
-                UserId = model.UserId,
-                RoleId = model.RoleId
-            });
-            return new ResponseMessage<long>()
-            {
-                Msg = "请求成功",
-                Status = 200,
-                Success = true,
-                ResponseInfo = id
-            };
+                UserRole userRole =  _userRoleService.Query(x => x.UserId == model.UserId && !x.IsRemove)?.Result;
+                if (userRole != null)
+                {
+                    userRole.RoleId = model.RoleId;
+                    bool update = await _userRoleService.Update(userRole);
+                    return new ResponseMessage<bool>()
+                    {
+                        Msg = "请求成功",
+                        Status = 200,
+                        Success = true,
+                        ResponseInfo = update
+                    };
+                }
+                return new ResponseMessage<bool>()
+                {
+                    Msg = "修改失败，找不到该用户",
+                    Success = false
+                };
+                
+            }
+            
         }
         /// <summary>
         /// 删除用户的角色

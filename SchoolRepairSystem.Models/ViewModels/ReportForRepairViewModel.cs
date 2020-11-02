@@ -37,5 +37,6 @@ namespace SchoolRepairSystem.Models.ViewModels
         public int Evaluate { get; set; }
 
         public DateTime DateTime { get; set; }
+
     }
 }

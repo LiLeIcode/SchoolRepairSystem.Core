@@ -51,12 +51,8 @@ namespace SchoolRepairSystem.Api.Controllers
             ReportForRepair reportForRepair = await _reportForRepairService.QueryById(roleReportForRepairId);
             if (reportForRepair.WaitHandle == 0)
             {
-                await _roleReportForRepairService.Add(new RoleReportForRepair()
-                {
-                    WorkerId = Convert.ToInt64(jti),
-                    RoleId = roles.Id,
-                    RepairId = roleReportForRepairId
-                });
+                reportForRepair.WorkerId = Convert.ToInt64(jti);
+                reportForRepair.RoleId = roles.Id;
                 reportForRepair.WaitHandle = 1;//1标志表示接受处理
                 bool update = await _reportForRepairService.Update(reportForRepair);
                 return update
@@ -100,26 +96,19 @@ namespace SchoolRepairSystem.Api.Controllers
         [HttpGet]
         [Route("myTask")]
         [Authorize(Policy = "ElectricianAndCarpentry")]
-        public async Task<ResponseMessage<List<ReportForRepairViewModel>>> GetMyTask(int pageNum, int size)
+        public ResponseMessage<List<ReportForRepairViewModel>> GetMyTask(int pageNum, int size)
         {
             string jti = HttpContext.User.FindFirst(x => x.Type == Microsoft.IdentityModel.JsonWebTokens.JwtRegisteredClaimNames.Jti)
                 .Value;
-            List<RoleReportForRepair> roleReportForRepairs = _roleReportForRepairService.QueryPagingByExp(x => x.WorkerId == Convert.ToInt64(jti) && !x.IsRemove, pageNum, size)?.Result;
-            List<long> idLongs = new List<long>();
-            if (roleReportForRepairs != null)
+            List<ReportForRepair> repairs = _reportForRepairService.QueryPagingByExp(x => x.WorkerId == Convert.ToInt64(jti) && !x.IsRemove, pageNum, size)?.Result;
+            if (repairs!=null)
             {
-                foreach (RoleReportForRepair roleReportForRepair in roleReportForRepairs)
-                {
-                    idLongs.Add(roleReportForRepair.RepairId);
-                }
-
-                List<ReportForRepair> reportForRepairs = await _reportForRepairService.QueryList(idLongs);
                 return new ResponseMessage<List<ReportForRepairViewModel>>()
                 {
                     Msg = "请求成功",
                     Status = 200,
                     Success = true,
-                    ResponseInfo = _mapper.Map<List<ReportForRepairViewModel>>(reportForRepairs)
+                    ResponseInfo = _mapper.Map<List<ReportForRepairViewModel>>(repairs)
                 };
             }
             return new ResponseMessage<List<ReportForRepairViewModel>>()
@@ -181,6 +170,44 @@ namespace SchoolRepairSystem.Api.Controllers
                 Msg = "没有该任务",
                 Success = false
             };
+        }
+
+
+        /// <summary>
+        ///  放弃任务
+        /// </summary>
+        /// <param name="repairId"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("abortMission")]
+        [Authorize(Policy = "ElectricianAndCarpentry")]
+        public async Task<ResponseMessage<bool>> UpdateWaitHandle(long repairId)
+        {
+            ReportForRepair repair = _reportForRepairService.QueryById(repairId)?.Result;
+            if (repair!=null&& repair.WaitHandle == 1)
+            {
+                repair.WaitHandle = 0;
+                repair.RoleId = 0;
+                repair.WorkerId = 0;
+                var update = await _reportForRepairService.Update(repair);
+                return new ResponseMessage<bool>()
+                {
+                    Status = 200,
+                    Msg = "弃单成功",
+                    Success = true,
+                    ResponseInfo = update
+                };
+            }
+            else
+            {
+                return new ResponseMessage<bool>()
+                {
+                    Msg = "弃单失败，没有该单或者没有接此单",
+                    Success = false,
+                };
+            }
+            
+            
         }
     }
 }

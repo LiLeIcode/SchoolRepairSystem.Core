@@ -97,7 +97,7 @@ namespace SchoolRepairSystem.Api.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("takeOutGoods")]
-        [Authorize(Policy = "ElectricianAndCarpentry")]//Carpentry Electrician
+        [Authorize(Policy = "AdminAndOrdinaryAndElectrician")]//Carpentry Electrician
         public async Task<ResponseMessage<long>> UpdateTakeOutGoods(long goodsId,int number)
         {
             WareHouse wareHouse = _wareHouseService.QueryById(goodsId)?.Result;

@@ -12,6 +12,7 @@ namespace SchoolRepairSystem.Extensions.AutoMapper
             CreateMap<ReportForRepair, ReportForRepairRecordViewModel>().ForMember(desc=>desc.ReportDateTime,opt=>opt.MapFrom(src=>src.DateTime));
             CreateMap<WareHouse,GoodsInfoViewModel>();
             CreateMap<ReportForRepair, ReportForRepairViewModel>();
+            CreateMap<ReportForRepair, RoleRepairViewModel>();
             //.ForMember(desc=>desc.Layer,opt=>opt.MapFrom(src=>src.Layer))
             //.ForMember(desc => desc.Tung, opt => opt.MapFrom(src => src.Tung))
             //.ForMember(desc => desc.Dorm, opt => opt.MapFrom(src => src.Dorm))

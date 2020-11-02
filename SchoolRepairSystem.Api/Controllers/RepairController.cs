@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
@@ -20,11 +22,13 @@ namespace SchoolRepairSystem.Api.Controllers
     {
         private readonly IReportForRepairService _reportForRepairService;
         private readonly IMapper _mapper;
+        private readonly IRoleReportForRepairService _roleReportForRepairService;
 
-        public RepairController(IReportForRepairService reportForRepairService,IMapper mapper)
+        public RepairController(IReportForRepairService reportForRepairService,IMapper mapper,IRoleReportForRepairService roleReportForRepairService)
         {
             _reportForRepairService = reportForRepairService;
             _mapper = mapper;
+            _roleReportForRepairService = roleReportForRepairService;
         }
         /// <summary>
         /// 报修
@@ -141,10 +145,50 @@ namespace SchoolRepairSystem.Api.Controllers
         [HttpGet]
         [Route("allRepair")]
         [Authorize(Policy = "AdminAndOrdinaryAndElectrician")]
-        public ResponseMessage<List<ReportForRepairViewModel>> GetAllRepair(int pageNum, int size)
+        public ResponseMessage<List<RoleRepairViewModel>> GetAllRepair(int pageNum, int size)
         {
+            ClaimsPrincipal principal = HttpContext.User;
+            string value = principal.FindFirst(x => x.Type == JwtRegisteredClaimNames.Jti).Value;
             List<ReportForRepair> reportForRepairs = _reportForRepairService.QueryPagingByExp(x=>!x.IsRemove,pageNum,size)?.Result;
             if (reportForRepairs!=null)
+            {
+                List<RoleRepairViewModel> repairViewModels = _mapper.Map<List<RoleRepairViewModel>>(reportForRepairs);
+                foreach (RoleRepairViewModel model in repairViewModels)
+                {
+                    model.LoginUserId = Convert.ToInt64(value);
+                }
+                return new ResponseMessage<List<RoleRepairViewModel>>()
+                {
+                    Msg = "请求成功",
+                    Status = 200,
+                    Success = true,
+                    ResponseInfo = repairViewModels
+                };
+            }
+            return new ResponseMessage<List<RoleRepairViewModel>>()
+            {
+                Msg = "请求成功,暂无无数据",
+                Status = 200,
+                Success = false,
+            };
+        }
+        /// <summary>
+        /// 获取该用户接受的所有的任务
+        /// </summary>
+        /// <param name="pageNum"></param>
+        /// <param name="size"></param>
+        /// <returns></returns>
+        //
+        [HttpGet]
+        [Route("workerRepair")]
+        [Authorize(Policy = "AdminAndOrdinaryAndElectrician")]
+        public ResponseMessage<List<ReportForRepairViewModel>> GetWorkerRepair(int pageNum, int size)
+        {
+            ClaimsPrincipal principal = HttpContext.User;
+            string value = principal.FindFirst(x => x.Type == JwtRegisteredClaimNames.Jti).Value;
+
+            List<ReportForRepair> reportForRepairs = _reportForRepairService.QueryPagingByExp(x => !x.IsRemove&&x.WorkerId==Convert.ToInt64(value), pageNum, size)?.Result;
+            if (reportForRepairs != null)
             {
                 return new ResponseMessage<List<ReportForRepairViewModel>>()
                 {
@@ -161,5 +205,5 @@ namespace SchoolRepairSystem.Api.Controllers
                 Success = false,
             };
         }
-     }
+    }
 }

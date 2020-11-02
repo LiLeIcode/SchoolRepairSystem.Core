@@ -45,7 +45,14 @@ namespace SchoolRepairSystem.Models
         /// 评价，0 or null没有评论，1好评，2中评，3差评
         /// </summary>
         public int Evaluate { get; set; }
-
+        /// <summary>
+        /// 接受任务者的角色
+        /// </summary>
+        public long RoleId { get; set; }
+        /// <summary>
+        /// 接受任务者
+        /// </summary>
+        public long WorkerId { get; set; }
 
     }
 }
