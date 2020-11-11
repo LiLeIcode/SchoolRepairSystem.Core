@@ -95,6 +95,12 @@
             <param name="size">看几个</param>
             <returns></returns>
         </member>
+        <member name="M:SchoolRepairSystem.Api.Controllers.RoleReportForRepairController.GetMyHITATask">
+            <summary>
+            查看自己接了哪些单未完成
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:SchoolRepairSystem.Api.Controllers.RoleReportForRepairController.UpdateMyTask(System.Int64)">
             <summary>
             完成任务
@@ -146,12 +152,13 @@
             <param name="number"></param>
             <returns></returns>
         </member>
-        <member name="M:SchoolRepairSystem.Api.Controllers.WareHouseController.UpdateTakeOutGoods(System.Int64,System.Int32)">
+        <member name="M:SchoolRepairSystem.Api.Controllers.WareHouseController.UpdateTakeOutGoods(System.Int64,System.Int32,System.Int64)">
             <summary>
             取出货物
             </summary>
             <param name="goodsId">货物id</param>
             <param name="number"></param>
+            <param name="workerId"></param>
             <returns></returns>
         </member>
         <member name="M:SchoolRepairSystem.Api.Controllers.WareHouseController.GetAllGoods(System.Int32,System.Int32)">

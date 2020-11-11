@@ -53,6 +53,8 @@ namespace SchoolRepairSystem.Models
         /// 接受任务者
         /// </summary>
         public long WorkerId { get; set; }
+        
+
 
     }
 }

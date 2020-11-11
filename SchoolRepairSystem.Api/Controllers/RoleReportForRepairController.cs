@@ -116,8 +116,39 @@ namespace SchoolRepairSystem.Api.Controllers
                 Msg = "你没有任何任务",
                 Success = true
             };
-
         }
+        /// <summary>
+        /// 查看自己接了哪些单未完成
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("myHITATask")]
+        [Authorize(Policy = "ElectricianAndCarpentry")]
+        public ResponseMessage<List<HITATaskViewModel>> GetMyHITATask()
+        {
+            string jti = HttpContext.User.FindFirst(x => x.Type == Microsoft.IdentityModel.JsonWebTokens.JwtRegisteredClaimNames.Jti)
+                .Value;
+            List<ReportForRepair> repairs = _reportForRepairService.QueryList(x => x.WorkerId == Convert.ToInt64(jti) && !x.IsRemove&&x.WaitHandle==1)?.Result;
+            if (repairs != null)
+            {
+                return new ResponseMessage<List<HITATaskViewModel>>()
+                {
+                    Msg = "请求成功",
+                    Status = 200,
+                    Success = true,
+                    ResponseInfo = _mapper.Map<List<HITATaskViewModel>>(repairs)
+                };
+            }
+            return new ResponseMessage<List<HITATaskViewModel>>()
+            {
+                Msg = "你没有任何任务",
+                Success = true
+            };
+        }
+
+
+
+
         /// <summary>
         /// 完成任务
         /// </summary>

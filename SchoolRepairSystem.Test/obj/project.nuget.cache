@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "fXPoQFz5J/EbklKqTRPgEm098D0wRErsqX3fBU65Mtk54KxM6t3U0JODAB6mt0l7bQuumd+BBEmB5/zcP8q1CQ==",
+  "dgSpecHash": "LENZNRuKajmeuGOfP490eyJSe1sQgg2vBzWygmhKCQfvWTqAIbktSvUOd0wMm8IppilVDrhu7DWaz8fTNWvL5A==",
   "success": true,
   "projectFilePath": "D:\\CSharperWeb\\SchoolRepairSystem\\SchoolRepairSystem.Test\\SchoolRepairSystem.Test.csproj",
   "expectedPackageFiles": [
@@ -109,10 +109,7 @@
     "C:\\Users\\admin\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\admin\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
-    "C:\\Users\\admin\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.3\\microsoft.aspnetcore.app.ref.3.1.3.nupkg.sha512",
-    "C:\\Users\\admin\\.nuget\\packages\\microsoft.netcore.app.ref\\3.1.0\\microsoft.netcore.app.ref.3.1.0.nupkg.sha512",
-    "C:\\Users\\admin\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\3.1.0\\microsoft.windowsdesktop.app.ref.3.1.0.nupkg.sha512"
+    "C:\\Users\\admin\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
   ],
   "logs": []
 }

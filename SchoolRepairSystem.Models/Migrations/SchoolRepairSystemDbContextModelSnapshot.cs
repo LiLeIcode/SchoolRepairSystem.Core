@@ -91,11 +91,11 @@ namespace SchoolRepairSystem.Models.Migrations
                     b.Property<long>("UserId")
                         .HasColumnType("bigint");
 
-                    b.Property<long>("WorkerId")
-                        .HasColumnType("bigint");
-
                     b.Property<int>("WaitHandle")
                         .HasColumnType("int");
+
+                    b.Property<long>("WorkerId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
@@ -204,6 +204,9 @@ namespace SchoolRepairSystem.Models.Migrations
                         .HasColumnType("int");
 
                     b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("UserWareHouseId")
                         .HasColumnType("bigint");
 
                     b.HasKey("Id");

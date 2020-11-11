@@ -94,11 +94,12 @@ namespace SchoolRepairSystem.Api.Controllers
         /// </summary>
         /// <param name="goodsId">货物id</param>
         /// <param name="number"></param>
+        /// <param name="workerId"></param>
         /// <returns></returns>
         [HttpGet]
         [Route("takeOutGoods")]
         [Authorize(Policy = "AdminAndOrdinaryAndElectrician")]//Carpentry Electrician
-        public async Task<ResponseMessage<long>> UpdateTakeOutGoods(long goodsId,int number)
+        public async Task<ResponseMessage<long>> UpdateTakeOutGoods(long goodsId,int number, long workerId)
         {
             WareHouse wareHouse = _wareHouseService.QueryById(goodsId)?.Result;
             if (wareHouse==null)
@@ -120,7 +121,9 @@ namespace SchoolRepairSystem.Api.Controllers
                     Goods = wareHouse.Goods,
                     GoodsId = wareHouse.Id,
                     PickUp = number,
-                    UserId = Convert.ToInt64(jti)
+                    UserId = Convert.ToInt64(jti),
+                    UserWareHouseId = workerId
+
                 });
                 return update ? new ResponseMessage<long>()
                 {

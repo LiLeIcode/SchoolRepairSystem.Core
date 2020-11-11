@@ -23,12 +23,16 @@ namespace SchoolRepairSystem.Api.Controllers
         private readonly IReportForRepairService _reportForRepairService;
         private readonly IMapper _mapper;
         private readonly IRoleReportForRepairService _roleReportForRepairService;
+        private readonly IUserWareHouseService _userWareHouseService;
+        private readonly IUsersService _usersService;
 
-        public RepairController(IReportForRepairService reportForRepairService,IMapper mapper,IRoleReportForRepairService roleReportForRepairService)
+        public RepairController(IReportForRepairService reportForRepairService,IMapper mapper,IRoleReportForRepairService roleReportForRepairService,IUserWareHouseService userWareHouseService,IUsersService usersService)
         {
             _reportForRepairService = reportForRepairService;
             _mapper = mapper;
             _roleReportForRepairService = roleReportForRepairService;
+            _userWareHouseService = userWareHouseService;
+            _usersService = usersService;
         }
         /// <summary>
         /// 报修
@@ -145,17 +149,92 @@ namespace SchoolRepairSystem.Api.Controllers
         [HttpGet]
         [Route("allRepair")]
         [Authorize(Policy = "AdminAndOrdinaryAndElectrician")]
-        public ResponseMessage<List<RoleRepairViewModel>> GetAllRepair(int pageNum, int size)
+        public async Task<ResponseMessage<List<RoleRepairViewModel>>> GetAllRepair(int pageNum, int size)
         {
+
+            //增加维修人和领取的材料,完成
             ClaimsPrincipal principal = HttpContext.User;
             string value = principal.FindFirst(x => x.Type == JwtRegisteredClaimNames.Jti).Value;
             List<ReportForRepair> reportForRepairs = _reportForRepairService.QueryPagingByExp(x=>!x.IsRemove,pageNum,size)?.Result;
             if (reportForRepairs!=null)
             {
-                List<RoleRepairViewModel> repairViewModels = _mapper.Map<List<RoleRepairViewModel>>(reportForRepairs);
-                foreach (RoleRepairViewModel model in repairViewModels)
+                List<RoleRepairViewModel> repairViewModels = new List<RoleRepairViewModel>();
+                foreach (ReportForRepair repair in reportForRepairs)
                 {
-                    model.LoginUserId = Convert.ToInt64(value);
+                    if (repair.WorkerId!=0)
+                    {
+                        List<UserWareHouse> userWareHouse = _userWareHouseService.QueryList(x => x.UserWareHouseId == repair.Id)?.Result;
+                        Users users = await _usersService.Query(x => x.Id == repair.WorkerId);
+                        if (userWareHouse!=null)
+                        {
+                            List<GoodsInfo> list = new List<GoodsInfo>();
+                            //将多次的取出记录拿出
+                            foreach (UserWareHouse wareHouse in userWareHouse)
+                            {
+                                list.Add(new GoodsInfo() {Goods = wareHouse.Goods, Number = wareHouse.PickUp});
+                            }
+                            RoleRepairViewModel roleRepairViewModel = new RoleRepairViewModel()
+                            {
+                                //userWareHouse.Goods, userWareHouse.PickUp
+                                Id = repair.Id,
+                                DateTime = repair.DateTime,
+                                Desc = repair.Desc,
+                                Dorm = repair.Dorm,
+                                Evaluate = repair.Evaluate,
+                                GoodsInfos = list,
+                                Layer = repair.Layer,
+                                UserName = users.UserName,
+                                LoginUserId = Convert.ToInt64(value),
+                                RoleId = repair.RoleId,
+                                WorkerId = repair.WorkerId,
+                                WaitHandle = repair.WaitHandle,
+                                Tung = repair.Tung
+                            };
+                            repairViewModels.Add(roleRepairViewModel);
+                        }
+                        else
+                        {
+                            RoleRepairViewModel roleRepairViewModel = new RoleRepairViewModel()
+                            {
+                                Id = repair.Id,
+                                DateTime = repair.DateTime,
+                                Desc = repair.Desc,
+                                Dorm = repair.Dorm,
+                                Evaluate = repair.Evaluate,
+                                GoodsInfos = null,
+                                Layer = repair.Layer,
+                                UserName = users.UserName,
+                                LoginUserId = Convert.ToInt64(value),
+                                RoleId = repair.RoleId,
+                                WorkerId = repair.WorkerId,
+                                WaitHandle = repair.WaitHandle,
+                                Tung = repair.Tung
+                            };
+                            repairViewModels.Add(roleRepairViewModel);
+                        }
+                        
+                    }
+                    else
+                    {
+                        RoleRepairViewModel roleRepairViewModel = new RoleRepairViewModel()
+                        {
+                            Id = repair.Id,
+                            DateTime = repair.DateTime,
+                            Desc = repair.Desc,
+                            Dorm = repair.Dorm,
+                            GoodsInfos = null,
+                            Evaluate = repair.Evaluate,
+                            Layer = repair.Layer,
+                            UserName = "无",
+                            LoginUserId = Convert.ToInt64(value),
+                            RoleId = repair.RoleId,
+                            WorkerId = repair.WorkerId,
+                            WaitHandle = repair.WaitHandle,
+                            Tung = repair.Tung
+                        };
+                        repairViewModels.Add(roleRepairViewModel);
+                    }
+                    //筛选查询完毕
                 }
                 return new ResponseMessage<List<RoleRepairViewModel>>()
                 {

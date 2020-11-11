@@ -13,6 +13,7 @@ namespace SchoolRepairSystem.Extensions.AutoMapper
             CreateMap<WareHouse,GoodsInfoViewModel>();
             CreateMap<ReportForRepair, ReportForRepairViewModel>();
             CreateMap<ReportForRepair, RoleRepairViewModel>();
+            CreateMap<ReportForRepair, HITATaskViewModel>();
             //.ForMember(desc=>desc.Layer,opt=>opt.MapFrom(src=>src.Layer))
             //.ForMember(desc => desc.Tung, opt => opt.MapFrom(src => src.Tung))
             //.ForMember(desc => desc.Dorm, opt => opt.MapFrom(src => src.Dorm))

@@ -26,5 +26,11 @@ namespace SchoolRepairSystem.Models
         /// </summary>
         public int PickUp { get; set; } = 0;
 
+        /// <summary>
+        /// 进出货id
+        /// </summary>
+
+        public long UserWareHouseId { get; set; }
+
     }
 }
