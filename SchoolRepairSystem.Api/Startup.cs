@@ -158,9 +158,15 @@ namespace SchoolRepairSystem.Api
                         Url = new Uri("https://github.com/LiLeIcode/SchoolRepairSystem.Core.git")
                     }
                 });
-                var basePath = Path.GetDirectoryName(typeof(Program).Assembly.Location);
-                var xmlPath = Path.Combine(basePath,
-                    "D:\\CSharperWeb\\SchoolRepairSystem\\SchoolRepairSystem.Api\\SchoolRepairSystem.Api.xml");
+                //var basePath = Path.GetDirectoryName(typeof(Program).Assembly.Location);
+                //Console.WriteLine(basePath);
+                //var xmlPath = Path.Combine(basePath,
+                //    "D:\\CSharperWeb\\SchoolRepairSystem\\SchoolRepairSystem.Api\\SchoolRepairSystem.Api.xml");
+                var xmlFile = $"{System.Reflection.Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory,
+                    xmlFile);
+                //Console.WriteLine("AppContext.BaseDirectory:" + AppContext.BaseDirectory);
+                //Console.WriteLine("xmlFile" + xmlFile);
                 c.IncludeXmlComments(xmlPath);
 
                 #region Swagger¼ÓËø
