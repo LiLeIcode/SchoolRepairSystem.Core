@@ -1,4 +1,4 @@
-//用户、维修与仓库表
+/*用户、维修与仓库表*/
 CREATE TABLE [dbo].[UserWareHouses] (
     [Id]                BIGINT        IDENTITY (1, 1) NOT NULL,
     [DateTime]          DATETIME2 (7) NOT NULL,
@@ -13,7 +13,7 @@ CREATE TABLE [dbo].[UserWareHouses] (
     CONSTRAINT [PK_RoleWareHouses] PRIMARY KEY CLUSTERED ([Id] ASC)
 );
 
-//仓库表
+/*仓库表*/
 CREATE TABLE [dbo].[WareHouses] (
     [Id]       BIGINT        IDENTITY (1, 1) NOT NULL,
     [DateTime] DATETIME2 (7) NOT NULL,
@@ -25,7 +25,7 @@ CREATE TABLE [dbo].[WareHouses] (
 
 
 
-//用户表
+/*用户表*/
 CREATE TABLE [dbo].[Users] (
     [Id]       BIGINT         IDENTITY (1, 1) NOT NULL,
     [DateTime] DATETIME2 (7)  NOT NULL,
@@ -38,7 +38,7 @@ CREATE TABLE [dbo].[Users] (
 );
 
 
-//用户与角色表
+/*用户与角色表*/
 CREATE TABLE [dbo].[UserRoles] (
     [Id]       BIGINT        IDENTITY (1, 1) NOT NULL,
     [DateTime] DATETIME2 (7) NOT NULL,
@@ -49,7 +49,7 @@ CREATE TABLE [dbo].[UserRoles] (
 );
 
 
-//角色表
+/*角色表*/
 CREATE TABLE [dbo].[Roles] (
     [Id]       BIGINT        IDENTITY (1, 1) NOT NULL,
     [DateTime] DATETIME2 (7) NOT NULL,
@@ -59,7 +59,7 @@ CREATE TABLE [dbo].[Roles] (
 );
 
 
-//角色与报修表
+/*角色与报修表*/
 CREATE TABLE [dbo].[RoleReportForRepairs] (
     [Id]       BIGINT        IDENTITY (1, 1) NOT NULL,
     [DateTime] DATETIME2 (7) NOT NULL,
@@ -76,7 +76,7 @@ EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'工人的id
 
 
 
-//保修表
+/*保修表*/
 CREATE TABLE [dbo].[ReportForRepairs] (
     [Id]         BIGINT        IDENTITY (1, 1) NOT NULL,
     [DateTime]   DATETIME2 (7) NOT NULL,
@@ -99,7 +99,7 @@ EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'报修者�
 
 
 
-//菜单表
+/*菜单表*/
 CREATE TABLE [dbo].[Menus] (
     [Id]       BIGINT         IDENTITY (1, 1) NOT NULL,
     [DateTime] DATETIME2 (7)  NOT NULL,
@@ -112,7 +112,7 @@ CREATE TABLE [dbo].[Menus] (
 
 
 
-//菜单表数据
+/*菜单表数据*/
 SET IDENTITY_INSERT [dbo].[Menus] ON
 INSERT INTO [dbo].[Menus] ([Id], [DateTime], [IsRemove], [MenuName], [Grade], [Path]) VALUES (1, N'2020-10-15 11:10:39', 0, N'我要报修', 3, N'reportForRepair')
 INSERT INTO [dbo].[Menus] ([Id], [DateTime], [IsRemove], [MenuName], [Grade], [Path]) VALUES (2, N'2020-10-15 11:10:39', 0, N'查看报修处理', 3, N'handle')
@@ -128,7 +128,7 @@ INSERT INTO [dbo].[Menus] ([Id], [DateTime], [IsRemove], [MenuName], [Grade], [P
 SET IDENTITY_INSERT [dbo].[Menus] OFF
 
 
-//报修表数据
+/*报修表数据*/
 SET IDENTITY_INSERT [dbo].[ReportForRepairs] ON
 INSERT INTO [dbo].[ReportForRepairs] ([Id], [DateTime], [IsRemove], [UserId], [Layer], [Tung], [Dorm], [Desc], [WaitHandle], [Evaluate], [RoleId], [WorkerId]) VALUES (1, N'2020-10-26 10:14:13', 0, 50, N'3层', N'三栋', N'333', N'333', 2, 1, 2, 48)
 INSERT INTO [dbo].[ReportForRepairs] ([Id], [DateTime], [IsRemove], [UserId], [Layer], [Tung], [Dorm], [Desc], [WaitHandle], [Evaluate], [RoleId], [WorkerId]) VALUES (2, N'2020-10-26 10:23:06', 0, 50, N'4层', N'四栋', N'444', N'325615', 2, 3, 2, 48)
@@ -148,7 +148,7 @@ INSERT INTO [dbo].[ReportForRepairs] ([Id], [DateTime], [IsRemove], [UserId], [L
 SET IDENTITY_INSERT [dbo].[ReportForRepairs] OFF
 
 
-//角色表数据、由于后端代码有地方写死，请勿修改角色表数据
+/*角色表数据、由于后端代码有地方写死，请勿修改角色表数据*/
 SET IDENTITY_INSERT [dbo].[Roles] ON
 INSERT INTO [dbo].[Roles] ([Id], [DateTime], [IsRemove], [RoleName]) VALUES (1, N'2020-10-10 08:58:47', 0, N'管理员')
 INSERT INTO [dbo].[Roles] ([Id], [DateTime], [IsRemove], [RoleName]) VALUES (2, N'2020-10-10 08:58:49', 0, N'电工')
@@ -157,7 +157,7 @@ INSERT INTO [dbo].[Roles] ([Id], [DateTime], [IsRemove], [RoleName]) VALUES (4, 
 SET IDENTITY_INSERT [dbo].[Roles] OFF
 
 
-//用户与角色表数据
+/*用户与角色表数据*/
 SET IDENTITY_INSERT [dbo].[UserRoles] ON
 INSERT INTO [dbo].[UserRoles] ([Id], [DateTime], [IsRemove], [UserId], [RoleId]) VALUES (1, N'2020-10-10 09:12:25', 0, 1, 1)
 INSERT INTO [dbo].[UserRoles] ([Id], [DateTime], [IsRemove], [UserId], [RoleId]) VALUES (47, N'2020-10-15 16:40:05', 0, 48, 2)
@@ -175,7 +175,7 @@ SET IDENTITY_INSERT [dbo].[UserRoles] OFF
 
 
 
-//用户表数据
+/*用户表数据*/
 SET IDENTITY_INSERT [dbo].[Users] ON
 INSERT INTO [dbo].[Users] ([Id], [DateTime], [IsRemove], [UserName], [Password], [Phone], [Mail]) VALUES (1, N'2020-10-09 16:04:29', 0, N'111', N'111', N'111', N'111')
 INSERT INTO [dbo].[Users] ([Id], [DateTime], [IsRemove], [UserName], [Password], [Phone], [Mail]) VALUES (48, N'2020-10-15 14:01:57', 0, N'王大锤', N'111111', N'13345698722', N'13345698722@163.com')
@@ -191,7 +191,7 @@ INSERT INTO [dbo].[Users] ([Id], [DateTime], [IsRemove], [UserName], [Password],
 INSERT INTO [dbo].[Users] ([Id], [DateTime], [IsRemove], [UserName], [Password], [Phone], [Mail]) VALUES (60, N'2020-11-04 09:05:20', 0, N'rrr', N'rrr', N'18307001845', N'2424117373@qq.com')
 SET IDENTITY_INSERT [dbo].[Users] OFF
 
-//角色与报修与仓库表数据
+/*角色与报修与仓库表数据*/
 SET IDENTITY_INSERT [dbo].[UserWareHouses] ON
 INSERT INTO [dbo].[UserWareHouses] ([Id], [DateTime], [IsRemove], [UserId], [GoodsId], [Goods], [Purchase], [PickUp], [ReportForRepairId], [UserWareHouseId]) VALUES (8, N'2020-10-15 16:42:52', 0, 1, 3, N'水管', 100, 0, 0, 0)
 INSERT INTO [dbo].[UserWareHouses] ([Id], [DateTime], [IsRemove], [UserId], [GoodsId], [Goods], [Purchase], [PickUp], [ReportForRepairId], [UserWareHouseId]) VALUES (9, N'2020-10-15 16:42:54', 0, 1, 3, N'水管', 100, 0, 0, 0)
@@ -245,7 +245,7 @@ SET IDENTITY_INSERT [dbo].[UserWareHouses] OFF
 
 
 
-//仓库表数据
+/*仓库表数据*/
 
 SET IDENTITY_INSERT [dbo].[WareHouses] ON
 INSERT INTO [dbo].[WareHouses] ([Id], [DateTime], [IsRemove], [Goods], [Number]) VALUES (3, N'2020-10-15 16:42:52', 0, N'水管', 5)

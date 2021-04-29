@@ -22,15 +22,13 @@ namespace SchoolRepairSystem.Api.Controllers
     {
         private readonly IReportForRepairService _reportForRepairService;
         private readonly IMapper _mapper;
-        private readonly IRoleReportForRepairService _roleReportForRepairService;
         private readonly IUserWareHouseService _userWareHouseService;
         private readonly IUsersService _usersService;
 
-        public RepairController(IReportForRepairService reportForRepairService,IMapper mapper,IRoleReportForRepairService roleReportForRepairService,IUserWareHouseService userWareHouseService,IUsersService usersService)
+        public RepairController(IReportForRepairService reportForRepairService,IMapper mapper,IUserWareHouseService userWareHouseService,IUsersService usersService)
         {
             _reportForRepairService = reportForRepairService;
             _mapper = mapper;
-            _roleReportForRepairService = roleReportForRepairService;
             _userWareHouseService = userWareHouseService;
             _usersService = usersService;
         }
@@ -77,7 +75,7 @@ namespace SchoolRepairSystem.Api.Controllers
         [HttpGet]
         [Route("allRepairRecord")]
         [Authorize(Policy = "Ordinary")]
-        public ResponseMessage<List<ReportForRepairRecordViewModel>> GetUserAllRecord(int pageNum,int size)
+        public ResponseMessage<List<ReportForRepairRecordViewModel>> GetUserAllRecord(int pageNum=1,int size=10)
         {
             string jti = HttpContext.User.FindFirst(x => x.Type == JwtRegisteredClaimNames.Jti).Value;
             List<ReportForRepair> reportForRepairs = _reportForRepairService.QueryPagingByExp(x => x.UserId == Convert.ToInt64(jti)&&!x.IsRemove, pageNum, size)?.Result;
@@ -149,13 +147,13 @@ namespace SchoolRepairSystem.Api.Controllers
         [HttpGet]
         [Route("allRepair")]
         [Authorize(Policy = "AdminAndOrdinaryAndElectrician")]
-        public async Task<ResponseMessage<List<RoleRepairViewModel>>> GetAllRepair(int pageNum, int size)
+        public async Task<ResponseMessage<List<RoleRepairViewModel>>> GetAllRepair(int pageNum=1, int size=10)
         {
 
             //增加维修人和领取的材料,完成
             ClaimsPrincipal principal = HttpContext.User;
             string value = principal.FindFirst(x => x.Type == JwtRegisteredClaimNames.Jti).Value;
-            List<ReportForRepair> reportForRepairs = _reportForRepairService.QueryPagingByExp(x=>!x.IsRemove,pageNum,size)?.Result;
+            List<ReportForRepair> reportForRepairs = _reportForRepairService.QueryPagingByExp(x=>!x.IsRemove,pageNum,size)?.Result.OrderByDescending(x=>x.DateTime).ToList();
             if (reportForRepairs!=null)
             {
                 List<RoleRepairViewModel> repairViewModels = new List<RoleRepairViewModel>();
@@ -261,7 +259,7 @@ namespace SchoolRepairSystem.Api.Controllers
         [HttpGet]
         [Route("workerRepair")]
         [Authorize(Policy = "AdminAndOrdinaryAndElectrician")]
-        public ResponseMessage<List<ReportForRepairViewModel>> GetWorkerRepair(int pageNum, int size)
+        public ResponseMessage<List<ReportForRepairViewModel>> GetWorkerRepair(int pageNum=1, int size=10)
         {
             ClaimsPrincipal principal = HttpContext.User;
             string value = principal.FindFirst(x => x.Type == JwtRegisteredClaimNames.Jti).Value;

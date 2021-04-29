@@ -22,14 +22,12 @@ namespace SchoolRepairSystem.Api.Controllers
     public class RoleReportForRepairController : ControllerBase
     {
         private readonly IReportForRepairService _reportForRepairService;
-        private readonly IRoleReportForRepairService _roleReportForRepairService;
         private readonly IRolesService _rolesService;
         private readonly IMapper _mapper;
 
-        public RoleReportForRepairController(IReportForRepairService reportForRepairService, IRoleReportForRepairService roleReportForRepairService, IRolesService rolesService, IMapper mapper)
+        public RoleReportForRepairController(IReportForRepairService reportForRepairService, IRolesService rolesService, IMapper mapper)
         {
             _reportForRepairService = reportForRepairService;
-            _roleReportForRepairService = roleReportForRepairService;
             _rolesService = rolesService;
             _mapper = mapper;
         }
@@ -96,7 +94,7 @@ namespace SchoolRepairSystem.Api.Controllers
         [HttpGet]
         [Route("myTask")]
         [Authorize(Policy = "ElectricianAndCarpentry")]
-        public ResponseMessage<List<ReportForRepairViewModel>> GetMyTask(int pageNum, int size)
+        public ResponseMessage<List<ReportForRepairViewModel>> GetMyTask(int pageNum = 1, int size = 10)
         {
             string jti = HttpContext.User.FindFirst(x => x.Type == Microsoft.IdentityModel.JsonWebTokens.JwtRegisteredClaimNames.Jti)
                 .Value;

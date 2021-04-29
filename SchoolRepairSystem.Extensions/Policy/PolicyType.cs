@@ -7,6 +7,9 @@ using SchoolRepairSystem.Extensions.Authorizations;
 
 namespace SchoolRepairSystem.Extensions.Policy
 {
+    /// <summary>
+    /// 这里是写死了，如果想修改rolename，需要更改
+    /// </summary>
     public class PolicyType
     {
         static string issuer = Appsettings.app(new[] { "PermissionRequirement", "Issuer" });

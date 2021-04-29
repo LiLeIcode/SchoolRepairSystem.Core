@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -22,6 +23,7 @@ using SchoolRepairSystem.Extensions.AutoMapper;
 using SchoolRepairSystem.Extensions.Policy;
 using SchoolRepairSystem.IRepository;
 using SchoolRepairSystem.IService;
+using SchoolRepairSystem.Models;
 using SchoolRepairSystem.Repository;
 using SchoolRepairSystem.Service;
 using Swashbuckle.AspNetCore.Filters;
@@ -58,20 +60,17 @@ namespace SchoolRepairSystem.Api
             services.AddScoped<IUserWareHouseRepository, UserWareHouseRepository>();
             services.AddScoped<IReportForRepairService, ReportForRepairService>();
             services.AddScoped<IReportForRepairRepository, ReportForRepairRepository>();
-            services.AddScoped<IRoleReportForRepairService, RoleReportForRepairService>();
             services.AddScoped<IMenuService, MenuService>();
-            services.AddScoped<IRoleReportForRepairRepository, RoleReportForRepairRepository>();
             services.AddScoped<IMenuRepository, MenuRepository>();
 
 
             services.AddSingleton(new Appsettings(Configuration));
+            services.AddDbContext<SchoolRepairSystemDbContext>();
 
             #region ÊÚÈ¨×¢²á·þÎñ
 
 
-            //var Issurer = "lilei.Auth";
-            //var Audience = "api.auth";
-            //var secret = "zxcvbnmasdfghjklqwertyuiop";
+            
 
             string issuer = Appsettings.app(new[] { "PermissionRequirement", "Issuer" });
             string audience = Appsettings.app(new[] { "PermissionRequirement", "Audience" });

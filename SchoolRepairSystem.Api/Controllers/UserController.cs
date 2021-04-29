@@ -36,7 +36,7 @@ namespace SchoolRepairSystem.Api.Controllers
         [HttpGet]
         [Route("userList")]
         [Authorize(Policy = "Admin")]
-        public async Task<ResponseMessage<List<UserAddRoleViewModel>>> GetUserList(int pageNum, int size)
+        public async Task<ResponseMessage<List<UserAddRoleViewModel>>> GetUserList(int pageNum = 1, int size = 10)
         {
             List<Users> userList = _usersService.QueryPagingByExp(x => !x.IsRemove, pageNum, size)?.Result;
             List<UserRole> userRoles = await _userRoleService.QueryAll();
