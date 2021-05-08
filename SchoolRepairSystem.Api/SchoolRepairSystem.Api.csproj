@@ -52,6 +52,9 @@
     <None Update="NetCore_sqlite.db-wal">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="SchoolRepairSystem.Api.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 
