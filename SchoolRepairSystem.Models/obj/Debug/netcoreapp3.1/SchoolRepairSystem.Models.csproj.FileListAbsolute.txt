@@ -21,3 +21,4 @@ D:\CSharperWeb\SchoolRepairSystem\SchoolRepairSystem.Models\obj\Debug\netcoreapp
 D:\CSharperWeb\SchoolRepairSystem\SchoolRepairSystem.Models\obj\Debug\netcoreapp3.1\SchoolRepairSystem.Models.dll
 D:\CSharperWeb\SchoolRepairSystem\SchoolRepairSystem.Models\obj\Debug\netcoreapp3.1\SchoolRepairSystem.Models.pdb
 D:\CSharperWeb\SchoolRepairSystem\SchoolRepairSystem.Models\obj\Debug\netcoreapp3.1\SchoolRepairSystem.Models.genruntimeconfig.cache
+D:\CSharperWeb\SchoolRepairSystem\SchoolRepairSystem.Models\obj\Debug\netcoreapp3.1\SchoolRepairSystem.Models.csprojAssemblyReference.cache
