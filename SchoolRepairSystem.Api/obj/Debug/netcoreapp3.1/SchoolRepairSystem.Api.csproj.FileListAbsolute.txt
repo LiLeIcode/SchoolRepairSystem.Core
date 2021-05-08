@@ -126,3 +126,6 @@ D:\CSharperWeb\SchoolRepairSystem\SchoolRepairSystem.Api\bin\Debug\netcoreapp3.1
 D:\CSharperWeb\SchoolRepairSystem\SchoolRepairSystem.Api\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
 D:\CSharperWeb\SchoolRepairSystem\SchoolRepairSystem.Api\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 D:\CSharperWeb\SchoolRepairSystem\SchoolRepairSystem.Api\bin\Debug\netcoreapp3.1\Humanizer.dll
+D:\CSharperWeb\SchoolRepairSystem\SchoolRepairSystem.Api\bin\Debug\netcoreapp3.1\NetCore_sqlite.db
+D:\CSharperWeb\SchoolRepairSystem\SchoolRepairSystem.Api\bin\Debug\netcoreapp3.1\NetCore_sqlite.db-shm
+D:\CSharperWeb\SchoolRepairSystem\SchoolRepairSystem.Api\bin\Debug\netcoreapp3.1\NetCore_sqlite.db-wal

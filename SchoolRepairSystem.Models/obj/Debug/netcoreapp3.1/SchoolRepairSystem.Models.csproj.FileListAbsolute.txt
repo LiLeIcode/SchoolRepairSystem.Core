@@ -15,10 +15,10 @@ D:\CSharperWeb\SchoolRepairSystem\SchoolRepairSystem.Models\bin\Debug\netcoreapp
 D:\CSharperWeb\SchoolRepairSystem\SchoolRepairSystem.Models\bin\Debug\netcoreapp3.1\SchoolRepairSystem.Models.runtimeconfig.dev.json
 D:\CSharperWeb\SchoolRepairSystem\SchoolRepairSystem.Models\bin\Debug\netcoreapp3.1\SchoolRepairSystem.Models.dll
 D:\CSharperWeb\SchoolRepairSystem\SchoolRepairSystem.Models\bin\Debug\netcoreapp3.1\SchoolRepairSystem.Models.pdb
-D:\CSharperWeb\SchoolRepairSystem\SchoolRepairSystem.Models\obj\Debug\netcoreapp3.1\SchoolRepairSystem.Models.csprojAssemblyReference.cache
 D:\CSharperWeb\SchoolRepairSystem\SchoolRepairSystem.Models\obj\Debug\netcoreapp3.1\SchoolRepairSystem.Models.AssemblyInfoInputs.cache
 D:\CSharperWeb\SchoolRepairSystem\SchoolRepairSystem.Models\obj\Debug\netcoreapp3.1\SchoolRepairSystem.Models.AssemblyInfo.cs
 D:\CSharperWeb\SchoolRepairSystem\SchoolRepairSystem.Models\obj\Debug\netcoreapp3.1\SchoolRepairSystem.Models.csproj.CoreCompileInputs.cache
 D:\CSharperWeb\SchoolRepairSystem\SchoolRepairSystem.Models\obj\Debug\netcoreapp3.1\SchoolRepairSystem.Models.dll
 D:\CSharperWeb\SchoolRepairSystem\SchoolRepairSystem.Models\obj\Debug\netcoreapp3.1\SchoolRepairSystem.Models.pdb
 D:\CSharperWeb\SchoolRepairSystem\SchoolRepairSystem.Models\obj\Debug\netcoreapp3.1\SchoolRepairSystem.Models.genruntimeconfig.cache
+D:\CSharperWeb\SchoolRepairSystem\SchoolRepairSystem.Models\obj\Debug\netcoreapp3.1\SchoolRepairSystem.Models.csprojAssemblyReference.cache
